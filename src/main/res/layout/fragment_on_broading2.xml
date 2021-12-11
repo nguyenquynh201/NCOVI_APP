@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".View.Fragments.OnBroading2Fragment">
+
+ <ImageView
+     android:id="@+id/img_obd_2"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:src="@drawable/image_2"/>
+<TextView
+    android:id="@+id/tv_obd_2"
+    android:layout_below="@id/img_obd_2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Hãy tự bảo vệ mình"
+    android:textSize="24sp"
+    android:fontFamily="@font/helveticaneue_bold"
+    android:textAlignment="center"
+    android:textColor="@color/color_main"
+    />
+</RelativeLayout>

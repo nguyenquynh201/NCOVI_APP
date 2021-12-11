@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.Activity.LoginActivity">
+<RelativeLayout
+    android:id="@+id/rlt_login_1"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@drawable/custom_bg_login"
+    >
+    <TextView
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/helveticaneue_bold"
+        android:text="Hệ thống khai báo y tế"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10sp"
+        android:textSize="24sp"
+        tools:ignore="HardcodedText" />
+</RelativeLayout>
+  <LinearLayout
+      android:layout_below="@id/rlt_login_1"
+      android:orientation="vertical"
+      android:padding="20dp"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Số điện thoại *"
+          android:textSize="18sp"
+          tools:ignore="HardcodedText"
+          android:textColor="@color/color_main"
+          android:fontFamily="@font/helveticaneue_bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+84"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/helveticaneue_bold"
+                />
+            <EditText
+                android:id="@+id/txt_sdt_login"
+                android:drawableStart="@drawable/ic_icon_phonel"
+                android:drawablePadding="10sp"
+                android:padding="10sp"
+                android:inputType="number"
+                android:hint="Nhập số điện thoại"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:textSize="16sp"
+                android:background="@null"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2sp"
+            android:layout_marginStart="30sp"
+            android:background="@drawable/custom_btn_border"/>
+    </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:orientation="horizontal"
+          android:weightSum="10"
+          android:layout_marginTop="20sp"
+          android:layout_height="wrap_content"
+          tools:ignore="InefficientWeight">
+          <Button
+              android:layout_weight="5"
+              android:layout_marginEnd="10sp"
+              android:background="@drawable/custom_btn_border"
+              android:textColor="@color/color_main"
+              android:id="@+id/btn_register"
+              android:layout_width="match_parent"
+              android:text="Đăng ký"
+              android:layout_gravity="center"
+              android:gravity="center"
+              android:fontFamily="@font/hindsiliguri_medium"
+              android:layout_height="50sp"
+              tools:ignore="HardcodedText" />
+          <Button
+              android:id="@+id/btn_login"
+              android:layout_weight="5"
+              android:layout_width="match_parent"
+              android:text="Đăng nhập"
+              android:layout_marginStart="10dp"
+              android:layout_gravity="center"
+              android:gravity="center"
+              android:background="@drawable/custom_btn"
+              android:textColor="@color/white"
+
+              android:fontFamily="@font/hindsiliguri_medium"
+              android:layout_height="50sp"/>
+
+      </LinearLayout>
+  </LinearLayout>
+</RelativeLayout>

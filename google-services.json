@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "905603207088",
+    "project_id": "otp-sms-33e8f",
+    "storage_bucket": "otp-sms-33e8f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905603207088:android:8309fb2bb5066f5f1f9075",
+        "android_client_info": {
+          "package_name": "com.example.ncovi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905603207088-qo60u1dugocs8dfpt2u7mgg7819bdhde.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ncovi",
+            "certificate_hash": "553db6105b8607759d75a08cca0107fed4b16e2d"
+          }
+        },
+        {
+          "client_id": "905603207088-5jdfolq910ur7vdh78r19qskka84s4mg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx9hjkEDA206ozcFsv5kzmGjB1hG_j-PM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905603207088-5jdfolq910ur7vdh78r19qskka84s4mg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

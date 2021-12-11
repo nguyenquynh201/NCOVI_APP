@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.ncovi">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_PHONE_NUMBERS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_MMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:name=".View.SharedPreference.MyApplication"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NCOVI">
+        <activity
+            android:name=".View.Activity.OTPActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.Activity.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.Activity.InformationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.Activity.Home"
+            android:exported="true" />
+        <activity
+            android:name=".View.Activity.OnBroadingMain_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".View.Activity.OnbroadingView_Activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver android:name=".View.BroadcastReceiver.OTPBroadCast"
+            tools:ignore="IntentFilterExportedReceiver,UnprotectedSMSBroadcastReceiver"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

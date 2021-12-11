@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.Fragments.OnBroading3Fragment">
+    <ImageView
+        android:id="@+id/img_obd_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/image_3"
+        />
+
+    <TextView
+        android:id="@+id/tv_obd_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_obd_3"
+        android:fontFamily="@font/helveticaneue_bold"
+        android:text="Hãy cùng chung tay đẩy lùi dịch bệnh"
+        android:textAlignment="center"
+        android:textColor="@color/color_main"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:id="@+id/lnl_onBoarding_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:padding="10sp">
+
+        <Button
+            android:id="@+id/btn_onBoarding_3"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@drawable/custom_btn"
+            android:text="Bắt đầu"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+    </LinearLayout>
+</RelativeLayout>
