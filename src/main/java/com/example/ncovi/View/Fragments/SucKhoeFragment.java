@@ -2,12 +2,14 @@ package com.example.ncovi.View.Fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -30,10 +32,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ncovi.Class.WrapContentLinearLayoutManager;
 import com.example.ncovi.Model.TinhTrangSucKhoe;
 import com.example.ncovi.Model.user;
 import com.example.ncovi.R;
 import com.example.ncovi.View.Activity.Home;
+import com.example.ncovi.View.Activity.ShowAllSucKhoeActivity;
 import com.example.ncovi.View.Adaptor.TinhTrangSucKhoeAdaptor;
 import com.example.ncovi.View.SharedPreference.DataManager;
 import com.example.ncovi.ViewModel.Response.TinhTrangViewModel;
@@ -53,7 +57,7 @@ import java.util.TimeZone;
 
 
 public class SucKhoeFragment extends Fragment {
-    private TextView tv_date_sk, tv_time_sk, tv_tinhtrang_sk, tv_canhbao_sk;
+    private TextView tv_show_all;
     private CheckBox checkBox_sk_1, checkBox_sk_2, checkBox_sk_3, checkBox_sk_4, checkBox_sk_5;
     private LinearLayout lnl_sk_1, lnl_sk_2, lnl_sk_3, lnl_sk_4, lnl_sk_5;
     ForegroundColorSpan foregroundColorSpan;
@@ -88,12 +92,29 @@ public class SucKhoeFragment extends Fragment {
     }
 
     private void iniUi() {
+        // ánh xạ recyclerview
         rcv_sk = view.findViewById(R.id.rcv_sk);
+        //ánh xạ checkbox
         checkBox_sk_1 = view.findViewById(R.id.cb_suckhoe_0);
         checkBox_sk_2 = view.findViewById(R.id.cb_suckhoe_1);
         checkBox_sk_3 = view.findViewById(R.id.cb_suckhoe_2);
         checkBox_sk_4 = view.findViewById(R.id.cb_suckhoe_3);
         checkBox_sk_5 = view.findViewById(R.id.cb_suckhoe_4);
+        //ánh xạ textview
+        tv_show_all = view.findViewById(R.id.tv_all);
+        //set kiểu chữ cho edittext;
+        UnderlineSpan underlineSpan = new UnderlineSpan();
+        String strAll  = "Xem tất cả";
+        SpannableString ss_all = new SpannableString(strAll);
+        ss_all.setSpan(underlineSpan , 0 , 10 , Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tv_show_all.setText(ss_all);
+        tv_show_all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity() , ShowAllSucKhoeActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
         checkBox_sk_5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -203,15 +224,9 @@ public class SucKhoeFragment extends Fragment {
         tinhTrangSucKhoeAdaptor = new TinhTrangSucKhoeAdaptor(getActivity());
         tinhTrangSucKhoeAdaptor.setDataTinhTrang(tinhTrangSucKhoes);
         rcv_sk.setHasFixedSize(true);
-        rcv_sk.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rcv_sk.setLayoutManager(new WrapContentLinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         rcv_sk.setAdapter(tinhTrangSucKhoeAdaptor);
     }
-
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//
-//    }
 
     private void AddTinhTrang() {
         idMember = user.getIdMember();

@@ -54,15 +54,20 @@
                    android:layout_width="match_parent"
                    android:layout_height="match_parent">
 
-                   <TextView
-                       android:id="@+id/tv_canhbao_sk"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:background="@drawable/custom_bg_sk"
-                       android:fontFamily="@font/helveticaneue_bold"
-                       android:padding="5sp"
-                       android:textColor="@color/white"
-                       android:textSize="16sp" />
+                  <RelativeLayout
+                      android:id="@+id/rlt_tt_1"
+                      android:layout_width="wrap_content"
+                      android:background="@drawable/custom_bg_sk"
+                      android:layout_height="wrap_content">
+                      <TextView
+                          android:id="@+id/tv_canhbao_sk"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:fontFamily="@font/helveticaneue_bold"
+                          android:padding="5sp"
+                          android:textColor="@color/white"
+                          android:textSize="16sp" />
+                  </RelativeLayout>
 
                    <TextView
 

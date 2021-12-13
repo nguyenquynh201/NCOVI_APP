@@ -13,11 +13,20 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserApplyViewModel extends ViewModel {
+    //register
     public MutableLiveData<user> mListUser;
+    //long
     public MutableLiveData<login> mObjectUser;
+    //checksdt
+    public MutableLiveData<String> mCheck;
+    //update member
+    public MutableLiveData<String> upDateMember;
+
     public UserApplyViewModel() {
         mListUser = new MutableLiveData<>();
         mObjectUser = new MutableLiveData<>();
+        mCheck = new MutableLiveData<>();
+        upDateMember = new MutableLiveData<>();
     }
 
     public MutableLiveData<user> getListUser() {
@@ -28,26 +37,33 @@ public class UserApplyViewModel extends ViewModel {
         return mObjectUser;
     }
 
-    public void iniData(String name ,
-                        String sdt ,
-                        String gioitinh ,
-                        String cmnd ,
-                        String ngaysinh ,
-                        String idTinh ,
+    public MutableLiveData<String> getCheck() {
+        return mCheck;
+    }
+
+    public MutableLiveData<String> getUpDateMember() {
+        return upDateMember;
+    }
+
+    // call register
+    public void iniData(String name,
+                        String sdt,
+                        String gioitinh,
+                        String cmnd,
+                        String ngaysinh,
+                        String idTinh,
                         String idHuyen,
                         String idXa,
                         String diachi
-                        )
-    {
+    ) {
         ApiInterface apiInterface = ApiService.apiInterface();
-        Call<user> callUser = apiInterface.LoadUser(name ,sdt , gioitinh , cmnd , ngaysinh , idTinh , idHuyen , idXa , diachi);
+        Call<user> callUser = apiInterface.LoadUser(name, sdt, gioitinh, cmnd, ngaysinh, idTinh, idHuyen, idXa, diachi);
         callUser.enqueue(new Callback<user>() {
             @Override
             public void onResponse(Call<user> call, Response<user> response) {
-                if(response.isSuccessful())
-                {
+                if (response.isSuccessful()) {
                     mListUser.postValue(response.body());
-                }else{
+                } else {
                     mListUser.postValue(null);
                 }
             }
@@ -58,17 +74,17 @@ public class UserApplyViewModel extends ViewModel {
             }
         });
     }
-    public void iniDataLogin(String sdt)
-    {
+
+    // call login
+    public void iniDataLogin(String sdt) {
         ApiInterface apiInterface = ApiService.apiInterface();
         Call<login> loginCall = apiInterface.loginUser(sdt);
         loginCall.enqueue(new Callback<login>() {
             @Override
             public void onResponse(Call<login> call, Response<login> response) {
-                if (response.isSuccessful())
-                {
+                if (response.isSuccessful()) {
                     mObjectUser.setValue(response.body());
-                }else{
+                } else {
                     mObjectUser.setValue(null);
                 }
             }
@@ -76,6 +92,58 @@ public class UserApplyViewModel extends ViewModel {
             @Override
             public void onFailure(Call<login> call, Throwable t) {
                 mObjectUser.setValue(null);
+            }
+        });
+    }
+    // call check register thông qua số điện thoại
+    public void intCheckSdt(String sdt) {
+        ApiInterface apiInterface = ApiService.apiInterface();
+        Call<String> checkSdt = apiInterface.CheckSdt(sdt);
+        checkSdt.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+                    mCheck.setValue(response.body());
+                } else {
+                    mCheck.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                mCheck.setValue(null);
+            }
+        });
+    }
+    // update member
+    public void iniDataUpdate(String name,
+                              String sdt,
+                              String gioitinh,
+                              String cmnd,
+                              String ngaysinh,
+                              String idTinh,
+                              String idHuyen,
+                              String idXa,
+                              String diachi,
+                              String email)
+    {
+        ApiInterface apiInterface = ApiService.apiInterface();
+        Call<String> callUpdate = apiInterface.updateMember(name, sdt, gioitinh, cmnd, ngaysinh, idTinh, idHuyen, idXa, diachi, email);
+        callUpdate.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful())
+                {
+                    upDateMember.setValue(response.body());
+                }
+                else {
+                    upDateMember.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                upDateMember.setValue(null);
             }
         });
     }

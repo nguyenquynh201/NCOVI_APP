@@ -1,17 +1,21 @@
 package com.example.ncovi.View.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.ncovi.R;
+import com.example.ncovi.View.Activity.ThongTinCaNhanActivity;
 
 
 public class DanhMucFragment extends Fragment {
-
+private CardView cardView;
+    View mView;
     public DanhMucFragment() {
         // Required empty public constructor
     }
@@ -24,7 +28,19 @@ public class DanhMucFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View mView = inflater.inflate(R.layout.fragment_danhmuc, container, false);
+        mView = inflater.inflate(R.layout.fragment_danhmuc, container, false);
+        iniUI();
         return mView;
+    }
+
+    private void iniUI() {
+        cardView = mView.findViewById(R.id.tt_canhan);
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity() , ThongTinCaNhanActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
     }
 }

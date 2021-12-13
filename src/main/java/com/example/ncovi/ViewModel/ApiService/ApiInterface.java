@@ -57,4 +57,23 @@ public interface ApiInterface {
                                                 @Field("canhbao") String canhbao,
                                                 @Field("ngay") String ngay,
                                                 @Field("gio") String gio);
+
+    //check sdt
+    @FormUrlEncoded
+    @POST("check_sdt.php")
+    Call<String> CheckSdt(@Field("sdt") String sdt);
+
+    /*update member*/
+    @FormUrlEncoded
+    @POST("updateMember.php")
+    Call<String> updateMember(@Field("name") String name,
+                             @Field("sdt") String sdt,
+                             @Field("gioitinh") String gioitinh,
+                             @Field("cmnd") String cmnd,
+                             @Field("ngaysinh") String ngaysinh,
+                             @Field("idTinh") String idTinh,
+                             @Field("idHuyen") String idHuyeb,
+                             @Field("idXa") String idXa,
+                             @Field("diachi") String diachi,
+                             @Field("email") String email);
 }

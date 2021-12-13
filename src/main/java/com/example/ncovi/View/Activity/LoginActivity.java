@@ -37,17 +37,18 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox cb_save;
     private boolean isCheck;
     public static final String SAVE_OPEN_APP = "SAVE_OPEN_APP";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        userApplyViewModel = new ViewModelProvider(LoginActivity.this).get(UserApplyViewModel.class);
         iniUI();
-        if (isCheck = true)
-        {
+        if (isCheck = true) {
             sdt = DataManager.loadSDT();
             cb_save.setChecked(false);
             edt_phone.setText(sdt);
-        }else if (isCheck = false){
+        } else if (isCheck = false) {
             cb_save.setChecked(true);
             edt_phone.setText("");
         }
@@ -55,12 +56,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 isCheck = isChecked;
-                if (cb_save.isChecked())
-                {
+                if (cb_save.isChecked()) {
                     DataManager.savePhone(edt_phone.getText().toString().trim());
                     Toast.makeText(LoginActivity.this, "Lưu số điện thoại", Toast.LENGTH_SHORT).show();
                     isCheck = false;
-                }else  if (!cb_save.isChecked()){
+                } else if (!cb_save.isChecked()) {
                     Toast.makeText(LoginActivity.this, "Bỏ lưu số điện thoại", Toast.LENGTH_SHORT).show();
                     isCheck = true;
                 }
@@ -96,33 +96,44 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 } else {
                     progressDialog.show();
-                    PhoneAuthProvider.getInstance().verifyPhoneNumber("+84" + edt_phone.getText().toString().trim()
-                            , 60, TimeUnit.SECONDS
-                            , LoginActivity.this
-                            , new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                    userApplyViewModel.getCheck().observe(LoginActivity.this, new Observer<String>() {
+                        @Override
+                        public void onChanged(String check) {
+                            if (check.equals("error")) {
+                                progressDialog.dismiss();
+                                Toast.makeText(LoginActivity.this, "Số điện thoại này đã đăng ký rồi ", Toast.LENGTH_SHORT).show();
+                            } else if (check.equals("success")) {
+                                PhoneAuthProvider.getInstance().verifyPhoneNumber("+84" + edt_phone.getText().toString().trim()
+                                        , 60, TimeUnit.SECONDS
+                                        , LoginActivity.this
+                                        , new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
-                                @Override
-                                public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                                            @Override
+                                            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
-                                }
+                                            }
 
-                                @Override
-                                public void onVerificationFailed(@NonNull FirebaseException e) {
-                                    progressDialog.dismiss();
-                                    Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            @Override
+                                            public void onVerificationFailed(@NonNull FirebaseException e) {
+                                                progressDialog.dismiss();
+                                                Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
-                                }
+                                            }
 
-                                @Override
-                                public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                                    progressDialog.dismiss();
-                                    Intent intent = new Intent(LoginActivity.this, OTPActivity.class);
-                                    intent.putExtra("sdt", sdt);
-                                    intent.putExtra("verification", s);
-                                    startActivity(intent);
-                                }
+                                            @Override
+                                            public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                                                progressDialog.dismiss();
+                                                Intent intent = new Intent(LoginActivity.this, OTPActivity.class);
+                                                intent.putExtra("sdt", sdt);
+                                                intent.putExtra("verification", s);
+                                                startActivity(intent);
+                                            }
+                                        });
+                            }
+                        }
+                    });
+                    userApplyViewModel.intCheckSdt(edt_phone.getText().toString().trim());
 
-                            });
 
                 }
             }
@@ -133,33 +144,30 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 progressDialog.show();
                 sdt = edt_phone.getText().toString().trim();
-                 userApplyViewModel = new ViewModelProvider(LoginActivity.this).get(UserApplyViewModel.class);
-                 userApplyViewModel.getObjectUser().observe(LoginActivity.this, new Observer<login>() {
-                     @Override
-                     public void onChanged(login login) {
-                         if(!edt_phone.getText().toString().trim().isEmpty() && edt_phone.getText().toString().trim().length() < 11)
-                         {
-                             if (login!=null)
-                             {
-                                 progressDialog.dismiss();
-                                 DataManager.saveUserName(login.getUser());
-                                 Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                                 Intent intent = new Intent(LoginActivity.this , Home.class);
-                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                 startActivity(intent);
-                             }
-                             else {
-                                 progressDialog.dismiss();
-                                 Toast.makeText(LoginActivity.this, "Tài khoản không hợp lệ", Toast.LENGTH_SHORT).show();
-                             }
-                         }else {
-                             progressDialog.dismiss();
-                             Toast.makeText(LoginActivity.this, "Vui lòng nhập số điện thoại", Toast.LENGTH_SHORT).show();
-                         }
+                userApplyViewModel.getObjectUser().observe(LoginActivity.this, new Observer<login>() {
+                    @Override
+                    public void onChanged(login login) {
+                        if (login != null) {
+                            if (!edt_phone.getText().toString().trim().isEmpty() && edt_phone.getText().toString().trim().length() < 11) {
+                                progressDialog.dismiss();
+                                DataManager.saveUserName(login.getUser());
+                                Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LoginActivity.this, Home.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                            } else {
+                                progressDialog.dismiss();
+                                Toast.makeText(LoginActivity.this, "Vui lòng nhập số điện thoại", Toast.LENGTH_SHORT).show();
 
-                     }
-                 });
-                 userApplyViewModel.iniDataLogin(sdt);
+                            }
+                        } else {
+                            progressDialog.dismiss();
+                            Toast.makeText(LoginActivity.this, "Tài khoản không hợp lệ", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+                userApplyViewModel.iniDataLogin(sdt);
             }
         });
     }

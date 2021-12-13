@@ -30,7 +30,7 @@ public class DataManager {
         }
         return instance;
     }
-
+    // user
     public static void saveUserName(user user) {
         Gson gson = new Gson();
         String srtUser = gson.toJson(user);

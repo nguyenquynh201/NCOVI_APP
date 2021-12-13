@@ -188,16 +188,36 @@
         android:layout_below="@id/btn_add_sk"
         android:layout_marginStart="24sp"
         android:layout_marginEnd="24sp"
-        android:layout_marginBottom="24sp"
+        android:layout_marginBottom="10sp"
         android:fontFamily="@font/helveticaneue_bold"
         android:text="Lịch sử theo dõi sức khỏe"
         android:textColor="@color/color_main"
         android:textSize="24sp" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_sk"
+
+    <TextView
+        android:id="@+id/tv_all"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/tv_history_sk"
-        android:layout_marginStart="24sp"
-        android:layout_marginEnd="25sp" />
+        android:layout_marginEnd="24sp"
+        android:fontFamily="@font/helveticaneue_bold"
+        android:gravity="right"
+        android:text="Xem tất cả"
+        android:textColor="@color/color_main"
+        android:textSize="18sp" />
+
+   <ScrollView
+       android:layout_below="@id/tv_all"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/rcv_sk"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+
+           android:layout_marginStart="24sp"
+           android:layout_marginTop="5sp"
+           android:layout_marginEnd="24sp"
+           tools:ignore="ScrollViewSize" />
+   </ScrollView>
 </RelativeLayout>
