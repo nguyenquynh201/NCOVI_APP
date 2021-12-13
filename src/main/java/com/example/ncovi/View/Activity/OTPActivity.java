@@ -52,7 +52,7 @@ public class OTPActivity extends AppCompatActivity {
     OTPBroadCast otpBroadCast;
     String verificationId;
     private UserApplyViewModel userApplyViewModel;
-    public static final String SAVE_OPEN_APP = "SAVE_OPEN_APP";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg"
+    tools:context=".View.Fragments.DanhMucFragment">
+<TextView
+    android:id="@+id/tv_tt"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Danh mục"
+    android:textColor="@color/black"
+    android:textSize="24sp"
+    android:layout_margin="20sp"
+    android:fontFamily="@font/hindsiliguri_medium"
+    />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_tt">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/tt_canhan"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_margin="20sp"
+            app:cardCornerRadius="5sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="70sp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_main"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_user_tt" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:paddingStart="20sp"
+                    android:text="Thông tin cá nhân"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/tt_dieukhoan"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_below="@id/tt_cachly"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
+            app:cardCornerRadius="5sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="70sp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_main"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_user_tt" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:paddingStart="20sp"
+                    android:text="Điều khoản sử dụng "
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/tt_hoidap"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_below="@id/tt_dieukhoan"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
+            app:cardCornerRadius="5sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="70sp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_main"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_user_tt" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:paddingStart="20sp"
+                    android:text="Gửi hỏi đáp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/tt_fanpage"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_below="@id/tt_hoidap"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
+            app:cardCornerRadius="5sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="70sp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_main"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_user_tt" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:paddingStart="20sp"
+                    android:text="Fanpage"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/tt_cachly"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_below="@id/tt_canhan"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
+            app:cardCornerRadius="5sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="70sp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_main"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_user_tt" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:paddingStart="20sp"
+                    android:text="Giám sát cách ly"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</RelativeLayout>

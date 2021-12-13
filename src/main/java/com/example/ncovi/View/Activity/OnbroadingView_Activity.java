@@ -1,7 +1,6 @@
 package com.example.ncovi.View.Activity;
 
-
-import static com.example.ncovi.View.Activity.OTPActivity.SAVE_OPEN_APP;
+import static com.example.ncovi.View.Activity.LoginActivity.SAVE_OPEN_APP;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +23,7 @@ private MySharedPreference mySharedPreference;
             public void run() {
                 if(mySharedPreference.saveOpenApp(SAVE_OPEN_APP))
                 {
-                    starActivity(InformationActivity.class);
+                    starActivity(LoginActivity.class);
                 }else {
                     starActivity(OnBroadingMain_Activity.class);
                     mySharedPreference.putBooleanValue(SAVE_OPEN_APP , true);

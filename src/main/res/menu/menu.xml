@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/home"
+    android:icon="@drawable/ic_home"
+    android:title="@string/home"/>
+    <item
+        android:id="@+id/suckhoe"
+        android:icon="@drawable/ic_suckhoe"
+        android:title="@string/suckhoe"/>
+    <item
+        android:id="@+id/qr_code"
+        android:icon="@drawable/ic_qr"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/feedback"
+        android:icon="@drawable/ic_feedback"
+        android:title="@string/feedback"/>
+    <item
+        android:id="@+id/danhmuc"
+        android:icon="@drawable/ic_danhmuc"
+        android:title="@string/danhmuc"/>
+</menu>

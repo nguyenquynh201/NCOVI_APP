@@ -83,7 +83,7 @@
                     android:drawableStart="@drawable/ic_ngaysinh"
                     android:drawablePadding="10sp"
                     android:fontFamily="@font/hindsiliguri_medium"
-                    android:hint="Nhập họ và tên"
+                    android:hint="dd/MM/yyyy"
                     android:paddingStart="10sp"
                     android:textColorHint="@color/color_edittext_1"
                     tools:ignore="HardcodedText,RtlSymmetry" />
@@ -107,28 +107,55 @@
                     android:textSize="16sp" />
 
                 <RadioGroup
+                    android:id="@+id/rdo_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="10">
+                        <RadioButton
+                            android:id="@+id/round_man"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="check"
+                            android:checked="true"
+                            android:text="Nam"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/hindsiliguri_medium"
+                            tools:ignore="InefficientWeight" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_man"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:text="Name"-->
+<!--                            android:textSize="18sp"-->
+<!--                            android:fontFamily="@font/hindsiliguri_medium"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            tools:ignore="HardcodedText" />-->
 
-                    <RadioButton
-                        android:id="@+id/round_man"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="7"
-                        android:fontFamily="@font/hindsiliguri_medium"
-                        android:text="Nam"
-                        android:textSize="18sp" />
 
-                    <RadioButton
-                        android:id="@+id/round_woman"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="7"
-                        android:fontFamily="@font/hindsiliguri_medium"
-                        android:text="Nữ"
-                        android:textSize="18sp" />
+
+                       <RadioButton
+                           android:id="@+id/round_woman"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+
+                           android:fontFamily="@font/hindsiliguri_medium"
+                            android:text="Nữ"
+                           android:onClick="check"
+                           android:textSize="18sp"
+                           tools:ignore="InefficientWeight" />
+<!--                       <TextView-->
+<!--                           android:id="@+id/tv_woman"-->
+<!--                           android:textColor="@color/black"-->
+<!--                           android:layout_gravity="center"-->
+<!--                           android:text="Nữ"-->
+<!--                           android:textSize="18sp"-->
+<!--                           android:fontFamily="@font/hindsiliguri_medium"-->
+<!--                           android:layout_width="wrap_content"-->
+<!--                           android:layout_height="wrap_content"-->
+<!--                           tools:ignore="HardcodedText" />-->
+
                 </RadioGroup>
             </LinearLayout>
 
@@ -205,12 +232,29 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <Spinner
-                        android:id="@+id/spinner_TP"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10sp" />
+                 <LinearLayout
+                     android:weightSum="10"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="horizontal">
+                     <TextView
+                         android:layout_weight="1"
+                         android:layout_gravity="center"
+                         android:id="@+id/tv_spinnerTP"
+                         android:layout_width="match_parent"
+                         android:gravity="center_vertical"
+                         android:paddingStart="10sp"
+                         android:textSize="18sp"
+                         android:layout_height="50sp"/>
+                     <Spinner
+                         android:layout_weight="9"
+                         android:gravity="center"
+                         android:id="@+id/spinner_TP"
+                         android:layout_width="match_parent"
+                         android:layout_height="50sp"
+                         android:layout_marginTop="10sp" />
 
+                 </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1.5sp"
@@ -223,13 +267,29 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10sp"
                     android:orientation="vertical">
-
-                    <Spinner
-                        android:id="@+id/spinner_QH"
+                    <LinearLayout
+                        android:weightSum="10"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10sp" />
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:id="@+id/tv_spinnerQH"
+                            android:layout_width="match_parent"
+                            android:gravity="center_vertical"
+                            android:paddingStart="10sp"
+                            android:textSize="18sp"
+                            android:layout_height="50sp"/>
+                        <Spinner
+                            android:layout_weight="9"
+                            android:gravity="center"
+                            android:id="@+id/spinner_QH"
+                            android:layout_width="match_parent"
+                            android:layout_height="50sp"
+                            android:layout_marginTop="10sp" />
 
+                    </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1.5sp"
@@ -242,13 +302,30 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10sp"
                     android:orientation="vertical">
-
-                    <Spinner
-                        android:id="@+id/spinner_PX"
+                    <LinearLayout
+                        android:weightSum="10"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10sp" />
+                        android:layout_height="wrap_content"
 
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:id="@+id/tv_spinnerPX"
+                            android:gravity="center_vertical"
+                            android:paddingStart="10sp"
+                            android:textSize="18sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="50sp"/>
+                        <Spinner
+                            android:layout_weight="9"
+                            android:gravity="center"
+                            android:id="@+id/spinner_PX"
+                            android:layout_width="match_parent"
+                            android:layout_height="50sp"
+                            android:layout_marginTop="10sp" />
+
+                    </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1.5sp"
@@ -294,7 +371,7 @@
                     android:id="@+id/txt_diachi"
                     android:layout_width="match_parent"
                     android:layout_height="50sp"
-                    android:layout_marginTop="10sp"
+                    android:layout_marginTop="20sp"
                     android:background="@drawable/custom_edittext_tt"
                     android:drawableStart="@drawable/ic_diachi"
                     android:drawablePadding="10sp"
@@ -335,7 +412,7 @@
                     android:fontFamily="@font/hindsiliguri_medium"
                     android:gravity="center_vertical"
                     android:paddingStart="10sp"
-                    android:textColor="@color/color_border"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     tools:ignore="HardcodedText,RtlSymmetry,UseCompatTextViewDrawableXml" />
             </LinearLayout>

@@ -8,6 +8,7 @@ public class MySharedPreference {
     private static final String SHARE_USER = "SHARE_USER";
     private static final String SHARE_SDT = "SHARE_SDT";
     private static final String MY_OPEN_APP ="MY_OPEN_APP" ;
+    private static final String SAVE_TINHTRANG ="SAVE_TINHTRANG" ;
     private Context context;
 
     public MySharedPreference(Context context) {
@@ -17,7 +18,7 @@ public class MySharedPreference {
     // load dữ liệu của member dựa vào idMeber;
     public String getStringUser(String key) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARE_USER, Context.MODE_PRIVATE);
-        return sharedPreferences.getString("sdt", "");
+        return sharedPreferences.getString("idMember", null);
     }
 
     //lưu dữ liệu user
@@ -42,15 +43,16 @@ public class MySharedPreference {
     public void putStringSDT(String key, String value) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARE_SDT, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("sdt", value);
+        editor.putString(key, value);
         editor.apply();
     }
 
     //load dữ liệu sdt
     public String getStringSDT(String key) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARE_USER, Context.MODE_PRIVATE);
-        return sharedPreferences.getString("sdt", null);
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARE_SDT, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(key, "");
     }
+    // lưu lại dữ liệu lần đầu tiên mở app
     public void putBooleanValue(String key , boolean value)
     {
         SharedPreferences sharedPreferences = context.getSharedPreferences(MY_OPEN_APP , 0);
@@ -58,8 +60,26 @@ public class MySharedPreference {
         editor.putBoolean(key ,value);
         editor.apply();
     }
+    // load dữ liệu lần đầu tiên mở app
     public boolean saveOpenApp(String key) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(MY_OPEN_APP, Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean(key, false);
+    }
+    // lưu danh sách tình trạng
+    public void getTinhTrang(String key , String value)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SAVE_TINHTRANG , Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("idMember" , value);
+        editor.putString("tinhtrangsuckhoe" , value);
+        editor.putString("canhbao" , value);
+        editor.putString("ngay" , value);
+        editor.putString("gio" , value);
+        editor.apply();
+    }
+    //load danh sach tình trạng
+    public String setTinhTrang(String key){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SAVE_TINHTRANG , Context.MODE_PRIVATE);
+        return sharedPreferences.getString("idMember" , null);
     }
 }
