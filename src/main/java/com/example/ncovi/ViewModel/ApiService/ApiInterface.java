@@ -66,7 +66,8 @@ public interface ApiInterface {
     /*update member*/
     @FormUrlEncoded
     @POST("updateMember.php")
-    Call<String> updateMember(@Field("name") String name,
+    Call<login> updateMember(@Field("idMember") String idMember,
+                             @Field("name") String name,
                              @Field("sdt") String sdt,
                              @Field("gioitinh") String gioitinh,
                              @Field("cmnd") String cmnd,

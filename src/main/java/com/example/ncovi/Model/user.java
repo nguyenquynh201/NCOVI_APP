@@ -143,7 +143,7 @@ public class user {
         this.diachi = diachi;
     }
 
-    public Object getEmail() {
+    public String getEmail() {
         return email;
     }
 

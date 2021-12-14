@@ -1,11 +1,332 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#Fa4362"
+    android:orientation="vertical"
     tools:context=".View.Fragments.HomeFragment">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ScrollViewSize">
+        <TextView
+            android:id="@+id/tv_main_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24sp"
+            android:fontFamily="@font/helveticaneue_bold"
+            android:text="Thông tin dịch bệnh"
+            android:textColor="@color/color_main"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:id="@+id/lnl_home_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="24sp">
+
+            <LinearLayout
+                android:layout_width="150sp"
+                android:layout_height="40sp"
+                android:background="@drawable/custom_bg_home_vietnam">
+
+                <View
+                    android:layout_width="40sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_vietnam" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:gravity="center"
+                    android:text="Việt nam"
+                    android:textColor="@color/color_main"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginEnd="24sp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:fontFamily="@font/hindsiliguri_medium"
+                android:text="Thông tin viêt nam"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_view_all"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="7"
+                android:text="Xem tất cả"
+                android:gravity="right"
+                android:textColor="@color/color_main"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/lnl_home_2"
+                android:layout_width="110sp"
+                android:layout_height="130sp"
+                android:layout_marginStart="24sp"
+                android:background="@drawable/custom_bg_nhiembenh"
+                android:orientation="vertical"
+                android:padding="5sp"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/tv_nhiembenh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:fontFamily="@font/helveticaneue_bold"
+                    android:text="1,428,428"
+                    android:textColor="@color/color_home_nhiembenh"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_nguoi_nhiembenh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="7"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:text="Nhiễm Bệnh"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_btn_nhiembenh">
+
+                    <TextView
+                        android:id="@+id/tv_count_soCa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helveticaneue_bold"
+                        android:gravity="center"
+                        android:text="+15,377"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnl_home_3"
+                android:layout_width="110sp"
+                android:layout_height="130sp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/custom_bg_tuvong"
+                android:orientation="vertical"
+                android:padding="5sp"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/tv_tuvong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:fontFamily="@font/helveticaneue_bold"
+                    android:text="1,428,428"
+                    android:textColor="@color/color_tuvong"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_nguoi_tuvong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="7"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:text="Tử vong"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_btn_tuvong">
+
+                    <TextView
+                        android:id="@+id/tv_count_tuvong"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helveticaneue_bold"
+                        android:gravity="center"
+                        android:text="+15,377"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnl_home_4"
+                android:layout_width="110sp"
+                android:layout_height="130sp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="24sp"
+                android:background="@drawable/custom_bg_binhphuc"
+                android:orientation="vertical"
+                android:padding="5sp"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/tv_binhphuc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:fontFamily="@font/helveticaneue_bold"
+                    android:text="1,428,428"
+
+                    android:textColor="@color/color_antoan"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_nguoi_binhphuc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="7"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:text="Bình phục"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_bg_sk">
+
+                    <TextView
+                        android:id="@+id/tv_count_binhphuc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helveticaneue_bold"
+                        android:gravity="center"
+                        android:text="+15,377"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
 
 
+            android:weightSum="10">
 
-</RelativeLayout>
+            <Button
+                android:layout_marginStart="24sp"
+                android:id="@+id/btn_khaibao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:padding="2sp"
+                android:layout_marginEnd="5sp"
+                android:background="@drawable/custom_btn"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:text="Khai báo y tế tự nguyện"
+                android:textColor="@color/white"
+
+                />
+
+            <Button
+                android:layout_marginEnd="24sp"
+                android:id="@+id/btn_huongdan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:layout_marginStart="5sp"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:background="@drawable/custom_btn"
+                android:text="hướng dẫn phòng chống dịch"
+                android:textColor="@color/white"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_weight="3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cảnh báo khu vực có dịch"
+                    android:textSize="18sp"
+                    android:layout_marginStart="24sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helveticaneue_bold"
+
+                    />
+                <TextView
+                    android:id="@+id/tv_full"
+                    android:layout_marginEnd="24sp"
+                    android:layout_weight="7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mở rộng"
+                    android:textSize="15dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:textColor="@color/color_main"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:layout_marginStart="24sp"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_marginStart="24sp"
+                android:layout_marginEnd="24sp"
+                android:layout_width="match_parent"
+                android:layout_height="1.5sp"
+                android:background="@color/color_main"
+                tools:ignore="SmallSp" />
+            <fragment
+                android:layout_marginTop="5sp"
+                android:id="@+id/myMap"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.example.mapwithmarker.MapsMarkerActivity"
+                tools:ignore="FragmentTagUsage" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

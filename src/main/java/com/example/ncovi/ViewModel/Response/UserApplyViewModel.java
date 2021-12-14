@@ -20,7 +20,7 @@ public class UserApplyViewModel extends ViewModel {
     //checksdt
     public MutableLiveData<String> mCheck;
     //update member
-    public MutableLiveData<String> upDateMember;
+    public MutableLiveData<login> upDateMember;
 
     public UserApplyViewModel() {
         mListUser = new MutableLiveData<>();
@@ -41,7 +41,7 @@ public class UserApplyViewModel extends ViewModel {
         return mCheck;
     }
 
-    public MutableLiveData<String> getUpDateMember() {
+    public MutableLiveData<login> getUpDateMember() {
         return upDateMember;
     }
 
@@ -116,7 +116,8 @@ public class UserApplyViewModel extends ViewModel {
         });
     }
     // update member
-    public void iniDataUpdate(String name,
+    public void iniDataUpdate(String idmember ,
+                              String name,
                               String sdt,
                               String gioitinh,
                               String cmnd,
@@ -128,10 +129,10 @@ public class UserApplyViewModel extends ViewModel {
                               String email)
     {
         ApiInterface apiInterface = ApiService.apiInterface();
-        Call<String> callUpdate = apiInterface.updateMember(name, sdt, gioitinh, cmnd, ngaysinh, idTinh, idHuyen, idXa, diachi, email);
-        callUpdate.enqueue(new Callback<String>() {
+        Call<login> callUpdate = apiInterface.updateMember(idmember,name, sdt, gioitinh, cmnd, ngaysinh, idTinh, idHuyen, idXa, diachi, email);
+        callUpdate.enqueue(new Callback<login>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<login> call, Response<login> response) {
                 if (response.isSuccessful())
                 {
                     upDateMember.setValue(response.body());
@@ -142,7 +143,7 @@ public class UserApplyViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<login> call, Throwable t) {
                 upDateMember.setValue(null);
             }
         });

@@ -119,6 +119,9 @@
                             android:onClick="check"
                             android:checked="true"
                             android:text="Nam"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:drawableStart="@drawable/custom_radio"
                             android:textSize="18sp"
                             android:fontFamily="@font/hindsiliguri_medium"
                             tools:ignore="InefficientWeight" />
@@ -139,7 +142,9 @@
                            android:id="@+id/round_woman"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
+                           android:button="@null"
 
+                           android:drawableStart="@drawable/custom_radio"
                            android:fontFamily="@font/hindsiliguri_medium"
                             android:text="Nữ"
                            android:onClick="check"

@@ -211,6 +211,7 @@ public class SucKhoeFragment extends Fragment {
             public void onChanged(List<TinhTrangSucKhoe> tinhTrangSucKhoes) {
                 ListtinhTrang = (ArrayList<TinhTrangSucKhoe>) tinhTrangSucKhoes;
                 if (ListtinhTrang != null) {
+                    DataManager.saveTinhTrang(tinhTrangSucKhoes);
                     loadData(ListtinhTrang);
                 }
             }

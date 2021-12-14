@@ -3,9 +3,168 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5734"
+    android:background="#F1F1F1"
     tools:context=".View.Fragments.QRFragment">
 
+    <RelativeLayout
+        android:id="@+id/rlt_qr_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24sp"
+        android:layout_marginTop="24sp"
+        android:layout_marginEnd="24sp"
+        android:layout_marginBottom="24sp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:id="@+id/tv_qr_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:fontFamily="@font/helveticaneue_bold"
+            android:text="Quét mã QR"
+            android:textColor="@color/color_main"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/history_qr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:text="Lich sử quét mã QR"
+            android:textColor="@color/color_main"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlt_qr_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rlt_qr_1"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="10sp"
+        android:layout_marginBottom="10sp"
+        android:background="@drawable/custom_nav">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:background="@drawable/custom_btn">
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/lnl_qr_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5sp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/username_qr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hindsiliguri_medium"
+                android:gravity="center"
+                android:text="Nguyễn Văn Quỳnh"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hindsiliguri_regular"
+                android:gravity="center"
+                android:text="Thời gian tạo mã QR"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/time_qr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:gravity="center"
+                android:text="21:59:30 14/12/2021"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlt_qr_3"
+            android:layout_width="300sp"
+            android:layout_height="300sp"
+            android:layout_below="@id/lnl_qr_1"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/custom_nav">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:id="@+id/danhsach_qr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/helveticaneue_bold"
+                    android:gravity="center"
+                    android:text="Danh sách QR Code"
+                    android:textColor="@color/color_main"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="230sp"
+                    android:layout_height="230sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5sp"
+                    android:src="@drawable/ic_qr_codee" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:gravity="center"
+                    android:text="Chạm mã QR để biết sức khỏe của bạn"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_qr"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_below="@id/rlt_qr_3"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/custom_btn"
+            android:drawableLeft="@drawable/ic_qr_scan"
+            android:paddingLeft="120sp"
+            android:paddingRight="110sp"
+            android:text="Quét mã qr"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+        <Button
+            android:id="@+id/btn_dangkydich"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_below="@id/btn_qr"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/custom_btn_border"
+            android:text="Đăng ký điểm kiểm dịch"
+            android:textColor="@color/color_main"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
+    </RelativeLayout>
 
 
 </RelativeLayout>
