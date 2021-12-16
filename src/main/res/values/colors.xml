@@ -6,9 +6,11 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="color_text_feedback">#131313</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color_main">#0C559D</color>
-    <color name="color_bg">#DCEFFF</color>
+    <color name="color_bg">#E3F0FB</color>
+    <color name="color_bg_feedback">#84BDED</color>
     <color name="color_edittext">#E7E7E7</color>
     <color name="color_border">#9C9C9C</color>
     <color name="color_edittext_1">#7AA0C6</color>
@@ -18,6 +20,7 @@
     <color name="color_nguyhiem">#ED4E4E</color>
     <color name="color_tuvong">#F62727</color>
     <color name="color_home_vietnam">#F79B9B</color>
+    <color name="color_home_world">#9FCCF8</color>
     <color name="color_home_nhiembenh">#EF9F49</color>
     <color name="color_home_nhiembenh_1">#F3E3BA</color>
     <color name="color_home_nhiembenh_2">#D3A45D</color>

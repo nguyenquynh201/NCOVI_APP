@@ -5,9 +5,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +18,7 @@ import com.example.ncovi.Model.TinhTrangSucKhoe;
 import com.example.ncovi.R;
 import com.example.ncovi.View.SharedPreference.DataManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TinhTrangSucKhoeAdaptor extends RecyclerView.Adapter<TinhTrangSucKhoeAdaptor.TinhTrangViewHolder> {
@@ -25,13 +28,20 @@ public class TinhTrangSucKhoeAdaptor extends RecyclerView.Adapter<TinhTrangSucKh
     public TinhTrangSucKhoeAdaptor(Context context) {
         this.context = context;
     }
-
+    public void searchTinhTrang(ArrayList<TinhTrangSucKhoe> tinhTrangSucKhoes){
+        if(tinhTrangSucKhoes!= null)
+        {
+            ListTinhTrangs  = tinhTrangSucKhoes;
+            notifyDataSetChanged();
+        }
+    }
     @SuppressLint("NotifyDataSetChanged")
     public void setDataTinhTrang(List<TinhTrangSucKhoe> ListTinhTrang) {
         this.ListTinhTrangs = ListTinhTrang;
-        int initialSize = ListTinhTrang.size();
-        ListTinhTrangs.addAll(ListTinhTrang);
-        notifyItemRangeInserted(initialSize, ListTinhTrangs.size()-1); //Correct position
+//        int initialSize = ListTinhTrang.size();
+//        ListTinhTrangs.addAll(ListTinhTrang);
+//        notifyItemRangeInserted(initialSize, ListTinhTrangs.size() - 1); //Correct position
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -49,16 +59,22 @@ public class TinhTrangSucKhoeAdaptor extends RecyclerView.Adapter<TinhTrangSucKh
         if (tinhTrangSucKhoe == null) {
             return;
         }
-
         holder.tv_date.setText(tinhTrangSucKhoe.getNgay());
         holder.tv_canhbao.setText(tinhTrangSucKhoe.getCanhbao());
         holder.tv_tinhtrang.setText(tinhTrangSucKhoe.getTinhtrangsuckhoe());
         holder.tv_time.setText(tinhTrangSucKhoe.getGio());
-        ListTinhTrangs = DataManager.loadTinhTrang();
         if (ListTinhTrangs.get(position).getCanhbao().equals("Nguy Hiểm")) {
             holder.relativeLayout.setBackgroundResource(R.drawable.custom_bg_sk_canhbao);
+            holder.btn_lienhe.setVisibility(View.VISIBLE);
+            holder.btn_lienhe.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context.getApplicationContext(), "0763021524", Toast.LENGTH_SHORT).show();
+                }
+            });
         } else if (ListTinhTrangs.get(position).getCanhbao().equals("An Toàn")) {
             holder.relativeLayout.setBackgroundResource(R.drawable.custom_bg_sk);
+            holder.btn_lienhe.setVisibility(View.GONE);
         }
 
     }
@@ -74,6 +90,7 @@ public class TinhTrangSucKhoeAdaptor extends RecyclerView.Adapter<TinhTrangSucKh
     public class TinhTrangViewHolder extends RecyclerView.ViewHolder {
         private TextView tv_date, tv_time, tv_tinhtrang, tv_canhbao;
         private RelativeLayout relativeLayout;
+        private Button btn_lienhe;
 
         public TinhTrangViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,6 +99,8 @@ public class TinhTrangSucKhoeAdaptor extends RecyclerView.Adapter<TinhTrangSucKh
             tv_tinhtrang = itemView.findViewById(R.id.tv_tinhtrang_sk);
             tv_canhbao = itemView.findViewById(R.id.tv_canhbao_sk);
             relativeLayout = itemView.findViewById(R.id.rlt_tt_1);
+            btn_lienhe = itemView.findViewById(R.id.btn_lienhe_sk);
         }
+
     }
 }

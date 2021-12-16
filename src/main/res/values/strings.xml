@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">NCOVI</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -7,4 +7,5 @@
     <string name="feedback">Phản ánh</string>
     <string name="danhmuc">Danh mục</string>
     <string name="key_map">AIzaSyCeBqeAAKbidf7epj76Ot7IpI4taQJ4MZE</string>
+    <string name="api_youtube_key" tools:ignore="Typos">AIzaSyClh99CCH1CJGx1IeV86iLrUbkvcRiVTNQ</string>
 </resources>

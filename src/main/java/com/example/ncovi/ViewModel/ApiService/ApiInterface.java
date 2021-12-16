@@ -49,6 +49,9 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("showtinhtrang.php")
     Call<List<TinhTrangSucKhoe>> ListTinhTrang(@Field("idMember") String idMember);
+    @FormUrlEncoded
+    @POST("show_all_tinhtrang.php")
+    Call<List<TinhTrangSucKhoe>> showListTinhTrang(@Field("idMember") String idMember);
     // call insert dữ liệu tình trạng sức khỏe
     @FormUrlEncoded
     @POST("tinhtrangsuckhoe.php")

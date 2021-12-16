@@ -6,10 +6,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -24,9 +32,17 @@ import com.example.ncovi.View.SharedPreference.DataManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+
 public class Home extends AppCompatActivity {
-private user user;
-private BottomNavigationView bottomNavigationView;
+    private user user;
+    private BottomNavigationView bottomNavigationView;
+    String username;
+    TextView tv_name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +50,14 @@ private BottomNavigationView bottomNavigationView;
         bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
         showFragments(new HomeFragment());
+        DialogToast(Gravity.CENTER);
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId())
-                {
-                    case R.id.home :
+                switch (item.getItemId()) {
+                    case R.id.home:
                         showFragments(new HomeFragment());
                         break;
                     case R.id.suckhoe:
@@ -56,16 +73,52 @@ private BottomNavigationView bottomNavigationView;
                         showFragments(new DanhMucFragment());
                         break;
                 }
-                return  true;
+                return true;
             }
         });
     }
 
-    public void showFragments(Fragment fragment)
-    {
+    public void showFragments(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout , fragment);
+        fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
 
+    @SuppressLint("SetTextI18n")
+    private void DialogToast(int gravity) {
+        user = DataManager.loadUser();
+        username = user.getName();
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_dialog_home);
+        dialog.setCanceledOnTouchOutside(false);
+        tv_name = dialog.findViewById(R.id.tv_name_home);
+        Button btn_ok = dialog.findViewById(R.id.btn_dongy_home);
+        Button btn_cancel = dialog.findViewById(R.id.btn_cancel_home);
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        WindowManager.LayoutParams attributes = window.getAttributes();
+        attributes.gravity = gravity;
+        window.setAttributes(attributes);
+        tv_name.setText("Xin Chào" + " " + username);
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFragments(new SucKhoeFragment());
+                bottomNavigationView.setSelectedItemId(R.id.suckhoe);
+                dialog.dismiss();
+            }
+        });
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
 }

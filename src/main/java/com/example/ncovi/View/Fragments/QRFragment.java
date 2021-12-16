@@ -56,7 +56,9 @@ View mView;
 
     private void iniUI() {
         users = DataManager.loadUser();
+        // ánh xạ button
         btn_qr = mView.findViewById(R.id.btn_qr);
+        // ánh xạ textview
         tv_name = mView.findViewById(R.id.username_qr);
         tv_time = mView.findViewById(R.id.time_qr);
         tv_history = mView.findViewById(R.id.history_qr);
@@ -75,9 +77,13 @@ View mView;
         //truyền dữ liệu vừa sét vào textview
         tv_history.setText(ss_history);
         tv_danhsach.setText(ss_listQR);
+        //
         date = Calendar.getInstance().getTime();
+        // tạo format cho ngày
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+        // gán dư liệu vừa tạo vào kiểu string
         strDate = dateFormat.format(date);
+        // đẩy dữ liệu vào textview
         tv_time.setText(strDate);
         tv_name.setText(users.getName());
         btn_qr.setOnClickListener(new View.OnClickListener() {

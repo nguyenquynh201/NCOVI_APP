@@ -75,9 +75,9 @@
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:layout_alignParentBottom="true"
+                       android:layout_marginBottom="70dp"
                        android:fontFamily="@font/hindsiliguri_medium"
                        android:text="Thông tin sức khỏe"
-                       android:layout_marginBottom="20sp"
                        android:textColor="@color/black"
                        android:textSize="14sp" />
 
@@ -87,7 +87,8 @@
                        android:layout_height="wrap_content"
                        android:layout_alignParentBottom="true"
                        android:layout_marginStart="10sp"
-                       android:layout_marginBottom="20sp"
+                       android:layout_marginBottom="70dp"
+                       android:text="có nguy cơ"
                        android:layout_toRightOf="@id/tv_tt_sk"
                        android:fontFamily="@font/hindsiliguri_regular"
                        android:textColor="@color/black" />
@@ -102,6 +103,19 @@
                        android:text="21:23"
                        android:textColor="@color/color_border"
                        android:textSize="18sp" />
+
+                   <Button
+
+                       android:id="@+id/btn_lienhe_sk"
+                       android:layout_width="100sp"
+                       android:layout_height="40sp"
+                       android:layout_alignParentEnd="true"
+                       android:layout_alignParentBottom="true"
+                       android:layout_marginBottom="20sp"
+                       android:background="@drawable/custom_btn"
+                       android:fontFamily="@font/hindsiliguri_medium"
+                       android:text="liện hệ"
+                       android:textColor="@color/white" />
                </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

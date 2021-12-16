@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="100sp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/img_view"
+            android:layout_width="100sp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/name_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
+            android:layout_toRightOf="@id/img_view"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:text="Việt nam"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+       <LinearLayout
+           android:layout_marginStart="10sp"
+           android:id="@+id/lnl_world_1"
+           android:layout_toRightOf="@id/img_view"
+           android:layout_below="@id/name_city"
+           android:layout_width="match_parent"
+           android:orientation="horizontal"
+           android:layout_height="wrap_content">
+
+           <TextView
+               android:layout_gravity="center"
+               android:layout_marginStart="10sp"
+               android:id="@+id/tv_socanhiem"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="@color/color_home_nhiembenh"
+               android:fontFamily="@font/helveticaneue_bold"
+               android:text="Số ca nhiễm"
+               />
+       </LinearLayout>
+        <LinearLayout
+            android:layout_marginStart="10sp"
+            android:id="@+id/lnl_world_2"
+           android:layout_toRightOf="@id/img_view"
+            android:layout_below="@id/lnl_world_1"
+           android:layout_width="match_parent"
+           android:orientation="horizontal"
+           android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_socatuvong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10sp"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:text="Số ca nhiễm"
+                android:textColor="@color/color_tuvong" />
+       </LinearLayout>
+        <LinearLayout
+            android:layout_marginStart="10sp"
+            android:id="@+id/lnl_world_3"
+           android:layout_toRightOf="@id/img_view"
+            android:layout_below="@id/lnl_world_2"
+           android:layout_width="match_parent"
+           android:orientation="horizontal"
+           android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_socakhoibenh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10sp"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:text="Số ca nhiễm"
+                android:textColor="@color/color_antoan" />
+       </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
+</RelativeLayout>

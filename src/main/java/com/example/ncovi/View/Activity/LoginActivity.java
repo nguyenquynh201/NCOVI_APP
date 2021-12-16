@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,9 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ncovi.Model.login;
-import com.example.ncovi.Model.user;
 import com.example.ncovi.R;
-import com.example.ncovi.View.BroadcastReceiver.OTPBroadCast;
 import com.example.ncovi.View.SharedPreference.DataManager;
 import com.example.ncovi.ViewModel.Response.UserApplyViewModel;
 import com.google.firebase.FirebaseException;

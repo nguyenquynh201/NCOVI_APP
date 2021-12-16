@@ -69,8 +69,9 @@ public class SucKhoeFragment extends Fragment {
     private TinhTrangSucKhoeAdaptor tinhTrangSucKhoeAdaptor;
     private user user;
     private ArrayList<TinhTrangSucKhoe> ListtinhTrang;
-    private String idMember , tinhtrang , canhbao , ngay , gio;
+    private String idMember, tinhtrang, canhbao, ngay, gio;
     private Date date;
+
     public SucKhoeFragment() {
         // Required empty public constructor
     }
@@ -104,14 +105,14 @@ public class SucKhoeFragment extends Fragment {
         tv_show_all = view.findViewById(R.id.tv_all);
         //set kiểu chữ cho edittext;
         UnderlineSpan underlineSpan = new UnderlineSpan();
-        String strAll  = "Xem tất cả";
+        String strAll = "Xem tất cả";
         SpannableString ss_all = new SpannableString(strAll);
-        ss_all.setSpan(underlineSpan , 0 , 10 , Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss_all.setSpan(underlineSpan, 0, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         tv_show_all.setText(ss_all);
         tv_show_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity() , ShowAllSucKhoeActivity.class);
+                Intent intent = new Intent(getActivity(), ShowAllSucKhoeActivity.class);
                 getActivity().startActivity(intent);
             }
         });
@@ -170,8 +171,12 @@ public class SucKhoeFragment extends Fragment {
                 @SuppressLint("SimpleDateFormat") SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
                 ngay = dateFormat.format(date);
                 gio = timeFormat.format(date);
-                if (checkBox_sk_1.isChecked() || checkBox_sk_2.isChecked() || checkBox_sk_3.isChecked() || checkBox_sk_4.isChecked())
-                {
+                boolean check_1  = checkBox_sk_1.isChecked();
+                boolean check_2  = checkBox_sk_2.isChecked();
+                boolean check_3  = checkBox_sk_3.isChecked();
+                boolean check_4  = checkBox_sk_4.isChecked();
+                boolean check_5  = checkBox_sk_5.isChecked();
+                if (checkBox_sk_1.isChecked() || checkBox_sk_2.isChecked() || checkBox_sk_3.isChecked() || checkBox_sk_4.isChecked()) {
                     canhbao = "Nguy Hiểm";
                     tinhtrang = "Có nguy cơ ";
                     DataManager.saveTinhTrang(ListtinhTrang);
@@ -181,10 +186,7 @@ public class SucKhoeFragment extends Fragment {
                     checkBox_sk_2.setChecked(false);
                     checkBox_sk_3.setChecked(false);
                     checkBox_sk_4.setChecked(false);
-
-
-                }else if(checkBox_sk_5.isChecked())
-                {
+                } else if (checkBox_sk_5.isChecked()) {
                     canhbao = "An Toàn";
                     tinhtrang = "Bình thường";
                     DataManager.saveTinhTrang(ListtinhTrang);
@@ -197,7 +199,8 @@ public class SucKhoeFragment extends Fragment {
                     checkBox_sk_5.setChecked(false);
 
                 }
-            }
+                }
+//            }
         });
     }
 
@@ -211,7 +214,7 @@ public class SucKhoeFragment extends Fragment {
             public void onChanged(List<TinhTrangSucKhoe> tinhTrangSucKhoes) {
                 ListtinhTrang = (ArrayList<TinhTrangSucKhoe>) tinhTrangSucKhoes;
                 if (ListtinhTrang != null) {
-                    DataManager.saveTinhTrang(tinhTrangSucKhoes);
+
                     loadData(ListtinhTrang);
                 }
             }
@@ -235,27 +238,26 @@ public class SucKhoeFragment extends Fragment {
             @Override
             public void onChanged(List<TinhTrangSucKhoe> tinhTrangSucKhoes) {
                 ListtinhTrang = (ArrayList<TinhTrangSucKhoe>) tinhTrangSucKhoes;
-                if(ListtinhTrang!=null) {
+                if (ListtinhTrang != null) {
                     loadData(ListtinhTrang);
                 }
             }
         });
-        tinhTrangViewModel.iniAddTinhTrang(idMember , tinhtrang , canhbao , ngay , gio);
+        tinhTrangViewModel.iniAddTinhTrang(idMember, tinhtrang, canhbao, ngay, gio);
 
     }
-    private void Dialog_AnToan(int gravity)
-    {
+
+    private void Dialog_AnToan(int gravity) {
         Dialog dialog_antoan = new Dialog(getActivity());
         dialog_antoan.setCanceledOnTouchOutside(false);
         dialog_antoan.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog_antoan.setContentView(R.layout.custom_dialog_antoan);
         Button btn_continue = dialog_antoan.findViewById(R.id.btn_continue);
         Window window = dialog_antoan.getWindow();
-        if(window == null)
-        {
+        if (window == null) {
             return;
         }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT  ,WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         WindowManager.LayoutParams attributes = window.getAttributes();
         attributes.gravity = gravity;
@@ -270,8 +272,8 @@ public class SucKhoeFragment extends Fragment {
         dialog_antoan.show();
 
     }
-    private void Dialog_NguyHiem(int gravity)
-    {
+
+    private void Dialog_NguyHiem(int gravity) {
         Dialog dialog_canhbao = new Dialog(getActivity());
         dialog_canhbao.setCanceledOnTouchOutside(false);
         dialog_canhbao.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -279,11 +281,10 @@ public class SucKhoeFragment extends Fragment {
         Button btn_lienhe = dialog_canhbao.findViewById(R.id.btn_lienhe);
         Button btn_continue = dialog_canhbao.findViewById(R.id.btn_continue);
         Window window = dialog_canhbao.getWindow();
-        if(window == null)
-        {
+        if (window == null) {
             return;
         }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT  ,WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         WindowManager.LayoutParams attributes = window.getAttributes();
         attributes.gravity = gravity;

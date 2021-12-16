@@ -1,19 +1,10 @@
 package com.example.ncovi.View.Activity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
-import android.Manifest;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,13 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ncovi.Model.user;
 import com.example.ncovi.R;
-import com.example.ncovi.View.BroadcastReceiver.OTPBroadCast;
-import com.example.ncovi.View.SharedPreference.DataManager;
 import com.example.ncovi.ViewModel.Response.UserApplyViewModel;
-import com.google.android.gms.auth.api.phone.SmsRetriever;
-import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -39,8 +25,6 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class OTPActivity extends AppCompatActivity {
     private EditText input_one, input_two, input_three, input_four, input_five, input_six;
@@ -49,9 +33,7 @@ public class OTPActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private static final int REQ_USER = 200;
     private String phone_number;
-    OTPBroadCast otpBroadCast;
     String verificationId;
-    private UserApplyViewModel userApplyViewModel;
 
 
     @Override

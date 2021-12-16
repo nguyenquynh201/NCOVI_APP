@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <LinearLayout
+        android:id="@+id/lnl_phongdich"
+        android:layout_margin="10sp"
+        android:background="@drawable/custom_bg_nhiembenh"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="100sp">
+        <LinearLayout
+            android:id="@+id/lnl_child_phongdich"
+            android:layout_width="100sp"
+            android:background="@drawable/custom_btn_nhiembenh"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/img_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/school"
+                android:padding="10sp"
+                />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_name_phongdich"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Danh cho trẻ em"
+            android:textColor="@color/black"
+            android:fontFamily="@font/helveticaneue_bold"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
+    </LinearLayout>
+</LinearLayout>

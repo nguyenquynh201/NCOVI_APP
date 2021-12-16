@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText"
+    tools:context=".View.Fragments.Child2FeedBackFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10sp">
+
+        <TextView
+            android:id="@+id/tv_khaibao_fb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helveticaneue_bold"
+            android:text="Trong 14 ngày qua , bạn hoặc người nhà *"
+            android:textColor="@color/color_text_feedback"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/cb_feedback_1_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableStart="@drawable/custom_checkbox"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:text="Có đi từ nước ngoài về Việt Nam không?"
+            android:textColor="@color/color_text_feedback"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5sp"
+            android:background="@color/color_bg"
+            tools:ignore="SmallSp" />
+
+        <CheckBox
+            android:id="@+id/cb_feedback_1_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableStart="@drawable/custom_checkbox"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:text="Có tiếp xúc với trường hợp đi từ nước ngoài về Việt Nam không?"
+            android:textColor="@color/color_text_feedback"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5sp"
+            android:background="@color/color_bg"
+            tools:ignore="SmallSp" />
+
+        <CheckBox
+            android:id="@+id/cb_feedback_1_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableStart="@drawable/custom_checkbox"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:text="Có biết xung quanh có trường hợp đi từ nước ngoài về Việt Nam không?"
+            android:textColor="@color/color_text_feedback"
+            android:textSize="14sp"
+             />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5sp"
+            android:background="@color/color_bg"
+            tools:ignore="SmallSp" />
+    </LinearLayout>
+<LinearLayout
+    android:layout_marginTop="10sp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <LinearLayout
+        android:id="@+id/lnl_feedback_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10sp">
+
+        <CheckBox
+            android:id="@+id/cb_thongtin_feedback_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableStart="@drawable/custom_checkbox"
+            android:text="Tôi cam kết các thông tin khai là đúng sự thật "
+            android:textColor="@color/color_tuvong"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnl_tt_8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10sp">
+
+        <Button
+            android:id="@+id/btn_thongtin_feedback_1"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:background="@drawable/custom_btn"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:text="Gửi thông tin khai báo"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/no_btn_thongtin_feedback_1"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:background="@drawable/custom_btn_noclick"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:text="Gửi thông tin khai báo"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>

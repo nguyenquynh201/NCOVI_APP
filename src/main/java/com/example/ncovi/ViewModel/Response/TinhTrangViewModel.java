@@ -16,10 +16,12 @@ import retrofit2.Response;
 public class TinhTrangViewModel extends ViewModel {
     public MutableLiveData<List<TinhTrangSucKhoe>> mListTinhTrang;
     public MutableLiveData<List<TinhTrangSucKhoe>> AddListTinhTrang;
+    public MutableLiveData<List<TinhTrangSucKhoe>> ShowAllListTinhTrang;
 
     public TinhTrangViewModel() {
         mListTinhTrang = new MutableLiveData<>();
         AddListTinhTrang = new MutableLiveData<>();
+        ShowAllListTinhTrang = new MutableLiveData<>();
     }
 
     public MutableLiveData<List<TinhTrangSucKhoe>> getAddListTinhTrang() {
@@ -29,17 +31,20 @@ public class TinhTrangViewModel extends ViewModel {
     public MutableLiveData<List<TinhTrangSucKhoe>> getListTinhTrang() {
         return mListTinhTrang;
     }
-    public void iniSelectList(String idMember)
-    {
+
+    public MutableLiveData<List<TinhTrangSucKhoe>> getShowAllListTinhTrang() {
+        return ShowAllListTinhTrang;
+    }
+
+    public void iniSelectList(String idMember) {
         ApiInterface apiInterface = ApiService.apiInterface();
         Call<List<TinhTrangSucKhoe>> listCall = apiInterface.ListTinhTrang(idMember);
         listCall.enqueue(new Callback<List<TinhTrangSucKhoe>>() {
             @Override
             public void onResponse(Call<List<TinhTrangSucKhoe>> call, Response<List<TinhTrangSucKhoe>> response) {
-                if(response.isSuccessful())
-                {
+                if (response.isSuccessful()) {
                     mListTinhTrang.setValue(response.body());
-                }else {
+                } else {
                     mListTinhTrang.setValue(null);
                 }
             }
@@ -51,17 +56,37 @@ public class TinhTrangViewModel extends ViewModel {
             }
         });
     }
-    public void iniAddTinhTrang(String idMember , String tinhtrang , String canhbao , String ngay , String gio)
-    {
+
+    public void iniAllSelectList(String idMember) {
         ApiInterface apiInterface = ApiService.apiInterface();
-        Call<List<TinhTrangSucKhoe>> addList = apiInterface.AddListSucKhoe(idMember , tinhtrang , canhbao , ngay , gio);
+        Call<List<TinhTrangSucKhoe>> showCall = apiInterface.showListTinhTrang(idMember);
+        showCall.enqueue(new Callback<List<TinhTrangSucKhoe>>() {
+            @Override
+            public void onResponse(Call<List<TinhTrangSucKhoe>> call, Response<List<TinhTrangSucKhoe>> response) {
+                if (response.isSuccessful()) {
+                    ShowAllListTinhTrang.setValue(response.body());
+                } else {
+                    ShowAllListTinhTrang.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<TinhTrangSucKhoe>> call, Throwable t) {
+                ShowAllListTinhTrang.setValue(null);
+
+            }
+        });
+    }
+
+    public void iniAddTinhTrang(String idMember, String tinhtrang, String canhbao, String ngay, String gio) {
+        ApiInterface apiInterface = ApiService.apiInterface();
+        Call<List<TinhTrangSucKhoe>> addList = apiInterface.AddListSucKhoe(idMember, tinhtrang, canhbao, ngay, gio);
         addList.enqueue(new Callback<List<TinhTrangSucKhoe>>() {
             @Override
             public void onResponse(Call<List<TinhTrangSucKhoe>> call, Response<List<TinhTrangSucKhoe>> response) {
-                if (response.isSuccessful())
-                {
+                if (response.isSuccessful()) {
                     AddListTinhTrang.setValue(response.body());
-                }else {
+                } else {
                     AddListTinhTrang.setValue(null);
                 }
             }

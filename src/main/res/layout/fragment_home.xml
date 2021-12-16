@@ -24,7 +24,7 @@
             android:id="@+id/lnl_home_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:orientation="horizontal"
             android:layout_marginStart="24sp">
 
             <LinearLayout
@@ -44,6 +44,28 @@
                     android:fontFamily="@font/hindsiliguri_medium"
                     android:gravity="center"
                     android:text="Việt nam"
+                    android:textColor="@color/color_main"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="20sp"
+                android:id="@+id/covid_work"
+                android:layout_width="150sp"
+                android:layout_height="40sp"
+                android:background="@drawable/custom_bg_home_word">
+
+                <View
+                    android:layout_width="40sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_world" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:gravity="center"
+                    android:text="Thế giới"
                     android:textColor="@color/color_main"
                     android:textSize="18sp" />
             </LinearLayout>
