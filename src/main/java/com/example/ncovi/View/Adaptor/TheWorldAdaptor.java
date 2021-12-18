@@ -59,6 +59,9 @@ public void search(ArrayList<covid> covids) {
         String tuvong = String.valueOf("Số ca tử vong :" +covid.getDeaths());
         String khoibenh = String.valueOf("Số ca khỏi bệnh :"+covid.getRecovered());
         String socanhiem = String.valueOf("Số ca nhiễm :"+covid.getCases());
+        String socatangtrongngay = String.valueOf(covid.getTodayCases());
+        String socatuvongtrongngay = String.valueOf(covid.getTodayDeaths());
+        String socakhoibenhtrongngay = String.valueOf(covid.getTodayRecovered());
         String name = covid.getCountry();
         Map<String , String> img = covid.getCountryInfo();
         Picasso.get().load(String.valueOf(img.get("flag"))).into(holder.img_bg);
@@ -66,6 +69,9 @@ public void search(ArrayList<covid> covids) {
         holder.tv_khoibenh.setText(khoibenh);
         holder.tv_socanhiem.setText(socanhiem);
         holder.tv_nameCity.setText(name);
+        holder.tv_socatuvong.setText(socatuvongtrongngay);
+        holder.tv_canhiemtang.setText(socatangtrongngay);
+        holder.tv_cabinhphuc.setText(socakhoibenhtrongngay);
     }
 
     @Override
@@ -81,7 +87,7 @@ public void search(ArrayList<covid> covids) {
 
     public class TheWorldViewHolder extends RecyclerView.ViewHolder{
         private ImageView img_bg ;
-        private TextView tv_socanhiem , tv_tuvong , tv_khoibenh , tv_nameCity;
+        private TextView tv_socanhiem , tv_tuvong , tv_khoibenh , tv_nameCity , tv_canhiemtang , tv_cabinhphuc , tv_socatuvong;
         public TheWorldViewHolder(@NonNull View itemView) {
             super(itemView);
             img_bg = itemView.findViewById(R.id.img_view);
@@ -89,6 +95,9 @@ public void search(ArrayList<covid> covids) {
             tv_khoibenh = itemView.findViewById(R.id.tv_socakhoibenh);
             tv_tuvong = itemView.findViewById(R.id.tv_socatuvong);
             tv_nameCity = itemView.findViewById(R.id.name_city);
+            tv_canhiemtang = itemView.findViewById(R.id.tv_socanhiem_tang);
+            tv_cabinhphuc = itemView.findViewById(R.id.tv_socakhoibenh_tang);
+            tv_socatuvong = itemView.findViewById(R.id.tv_socatuvong_tang);
         }
     }
 }

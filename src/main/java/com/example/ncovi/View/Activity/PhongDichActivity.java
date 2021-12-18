@@ -23,7 +23,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhongDichActivity extends YouTubeBaseActivity{
+public class PhongDichActivity extends AppCompatActivity{
     private static final int REQUEST_CODE = 123;
     private Toolbar toolbar;
 private YouTubePlayerView youTubePlayerView;
@@ -35,37 +35,38 @@ private String API_KEY = "AIzaSyClh99CCH1CJGx1IeV86iLrUbkvcRiVTNQ";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phong_dich);
-        youTubePlayerView = findViewById(R.id.ytb_phongdich);
+//        youTubePlayerView = findViewById(R.id.ytb_phongdich);
+        recyclerView = findViewById(R.id.rcv_phongchong);
         getListData();
-        YouTubePlayer.OnInitializedListener listener = new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                //load video using youtube video id
-                youTubePlayer.cueVideo("AqaJOj6dpN0");
-                //start video
-//                youTubePlayer.play();
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                //display toast
-                if (youTubeInitializationResult.isUserRecoverableError()){
-                    youTubeInitializationResult.getErrorDialog(PhongDichActivity.this , REQUEST_CODE);
-                }else {
-
-                Toast.makeText(getApplicationContext(), "Faild", Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
-        youTubePlayerView.initialize(API_KEY , listener);
+//        YouTubePlayer.OnInitializedListener listener = new YouTubePlayer.OnInitializedListener() {
+//            @Override
+//            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+//                //load video using youtube video id
+//                youTubePlayer.cueVideo("AqaJOj6dpN0");
+//                //start video
+////                youTubePlayer.play();
+//            }
+//
+//            @Override
+//            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+//                //display toast
+//                if (youTubeInitializationResult.isUserRecoverableError()){
+//                    youTubeInitializationResult.getErrorDialog(PhongDichActivity.this , REQUEST_CODE);
+//                }else {
+//
+//                Toast.makeText(getApplicationContext(), "Faild", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        };
+//        youTubePlayerView.initialize(API_KEY , listener);
         onBack();
 
 
     }
 
     private void getListData() {
+        mList = new ArrayList<>();
         mList = getList();
-        recyclerView = findViewById(R.id.rcv_phongchong);
         phongChongDichAdaptor = new PhongChongDichAdaptor(getList() , this);
         phongChongDichAdaptor.setData(getList());
         recyclerView.setHasFixedSize(true);
@@ -78,17 +79,17 @@ private String API_KEY = "AIzaSyClh99CCH1CJGx1IeV86iLrUbkvcRiVTNQ";
         mListData.add(new phongdich(R.drawable.custom_bg_nhiembenh , R.drawable.custom_btn_nhiembenh , R.drawable.school , "Danh cho học sinh"));
         mListData.add(new phongdich(R.drawable.custom_bg_binhphuc , R.drawable.custom_bg_sk , R.drawable.school , "Danh cho phụ huynh"));
         mListData.add(new phongdich(R.drawable.custom_bg_nhiembenh , R.drawable.custom_btn_nhiembenh , R.drawable.school , "Danh cho học sinh"));
-        return mList;
+        return mListData;
     }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == REQUEST_CODE)
-        {
-            youTubePlayerView.initialize(API_KEY , (YouTubePlayer.OnInitializedListener) PhongDichActivity.this);
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if(requestCode == REQUEST_CODE)
+//        {
+//            youTubePlayerView.initialize(API_KEY , (YouTubePlayer.OnInitializedListener) PhongDichActivity.this);
+//        }
+//    }
 
     @SuppressLint("UseSupportActionBar")
     private void onBack() {

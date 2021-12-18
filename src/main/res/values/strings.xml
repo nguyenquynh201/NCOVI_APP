@@ -6,6 +6,7 @@
     <string name="suckhoe">Sức khỏe</string>
     <string name="feedback">Phản ánh</string>
     <string name="danhmuc">Danh mục</string>
+    <string name="mapbox_access_token">sk.eyJ1IjoicXV5bmhuc28xMjMiLCJhIjoiY2t4YWt3MGR1MmxteTJ1bzFtYWJ3MGc0YyJ9.aH4eqrwT70RU479lTktpvw</string>
     <string name="key_map">AIzaSyCeBqeAAKbidf7epj76Ot7IpI4taQJ4MZE</string>
     <string name="api_youtube_key" tools:ignore="Typos">AIzaSyClh99CCH1CJGx1IeV86iLrUbkvcRiVTNQ</string>
 </resources>

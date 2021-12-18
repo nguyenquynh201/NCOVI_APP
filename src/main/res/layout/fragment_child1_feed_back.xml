@@ -96,7 +96,7 @@
                     android:button="@null"
                     android:drawableStart="@drawable/custom_checkbox"
                     android:fontFamily="@font/hindsiliguri_medium"
-                    android:text="Có người tiếp xúc với trường hợp bênh hoặc nghi ngờ mắc bệnh COVID-19"
+                    android:text="Có người tiếp xúc với trường hợp từ vùng dịch nghi ngờ mắc bệnh COVID-19"
                     android:textColor="@color/color_text_feedback"
                     android:textSize="14sp" />
 
@@ -206,7 +206,7 @@
                                 android:fontFamily="@font/hindsiliguri_medium"
                                 android:gravity="center_vertical"
                                 android:paddingStart="10sp"
-                                android:text="Time"
+
                                 android:textColor="@color/black"
                                 android:textSize="18sp" />
 

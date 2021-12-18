@@ -53,7 +53,7 @@ public class PhongChongDichAdaptor extends RecyclerView.Adapter<PhongChongDichAd
         holder.tv_name.setText(phongdich.getTitle());
         holder.layout.setBackgroundResource(phongdich.getBg());
         holder.layout_child.setBackgroundResource(phongdich.getBg_icon());
-        holder.img_icon.setImageResource(phongdich.getIcon());
+        holder.img_icon.setBackgroundResource(phongdich.getIcon());
     }
 
     @Override

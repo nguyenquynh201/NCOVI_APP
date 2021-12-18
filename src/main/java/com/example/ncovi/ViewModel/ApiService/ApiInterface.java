@@ -2,6 +2,7 @@ package com.example.ncovi.ViewModel.ApiService;
 
 import com.example.ncovi.Model.TinhTrangSucKhoe;
 import com.example.ncovi.Model.login;
+import com.example.ncovi.Model.phananh;
 import com.example.ncovi.Model.phuongxa;
 import com.example.ncovi.Model.quanhuyen;
 import com.example.ncovi.Model.thanhpho;
@@ -30,8 +31,7 @@ public interface ApiInterface {
     // đăng ký
     @FormUrlEncoded
     @POST("register.php")
-    Call<user> LoadUser(
-                        @Field("name") String name,
+    Call<user> LoadUser(@Field("name") String name,
                         @Field("sdt") String sdt ,
                         @Field("gioitinh") String gioitinh ,
                         @Field("cmnd") String cmnd,
@@ -80,4 +80,18 @@ public interface ApiInterface {
                              @Field("idXa") String idXa,
                              @Field("diachi") String diachi,
                              @Field("email") String email);
+    //insert phản ánh
+    @FormUrlEncoded
+    @POST("phananh.php")
+    Call<phananh> insertFeedback(@Field("idMember") String idMember,
+                                 @Field("truonghop1") String truonghop1,
+                                 @Field("truonghop2") String truonghop2,
+                                 @Field("truonghop3") String truonghop3,
+                                 @Field("noidung") String noidung,
+                                 @Field("thoigian") String thoigian,
+                                 @Field("tinh") String tinh,
+                                 @Field("huyen") String huyen,
+                                 @Field("xa") String xa,
+                                 @Field("diachi") String diachi
+                                 );
 }

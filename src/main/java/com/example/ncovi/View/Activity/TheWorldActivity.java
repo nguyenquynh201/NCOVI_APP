@@ -80,7 +80,7 @@ public class TheWorldActivity extends AppCompatActivity {
     private void searchCity(String name)
     {
         ArrayList<covid> covids = new ArrayList<>();
-        for (covid covid : covids)
+        for (covid covid : mListCovid)
         {
             if(covid.getCountry().toLowerCase(Locale.ROOT).contains(name.toLowerCase(Locale.ROOT)))
             {
