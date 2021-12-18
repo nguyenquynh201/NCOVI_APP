@@ -67,9 +67,9 @@ dependencies {
 
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.0'
 
-    implementation 'com.mapbox.maps:android:10.2.0'
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-core:5.0.0'
-    implementation "com.mapbox.navigation:android:2.1.1"
+//    implementation 'com.mapbox.maps:android:10.2.0'
+//    implementation 'com.mapbox.mapboxsdk:mapbox-android-core:5.0.0'
+//    implementation "com.mapbox.navigation:android:2.1.1"
 
 
 }

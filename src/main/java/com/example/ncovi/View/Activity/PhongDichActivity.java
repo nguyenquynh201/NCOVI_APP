@@ -35,30 +35,9 @@ private String API_KEY = "AIzaSyClh99CCH1CJGx1IeV86iLrUbkvcRiVTNQ";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phong_dich);
-//        youTubePlayerView = findViewById(R.id.ytb_phongdich);
         recyclerView = findViewById(R.id.rcv_phongchong);
         getListData();
-//        YouTubePlayer.OnInitializedListener listener = new YouTubePlayer.OnInitializedListener() {
-//            @Override
-//            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-//                //load video using youtube video id
-//                youTubePlayer.cueVideo("AqaJOj6dpN0");
-//                //start video
-////                youTubePlayer.play();
-//            }
-//
-//            @Override
-//            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-//                //display toast
-//                if (youTubeInitializationResult.isUserRecoverableError()){
-//                    youTubeInitializationResult.getErrorDialog(PhongDichActivity.this , REQUEST_CODE);
-//                }else {
-//
-//                Toast.makeText(getApplicationContext(), "Faild", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        };
-//        youTubePlayerView.initialize(API_KEY , listener);
+
         onBack();
 
 
@@ -77,8 +56,8 @@ private String API_KEY = "AIzaSyClh99CCH1CJGx1IeV86iLrUbkvcRiVTNQ";
     private List<phongdich> getList() {
         List<phongdich> mListData = new ArrayList<>();
         mListData.add(new phongdich(R.drawable.custom_bg_nhiembenh , R.drawable.custom_btn_nhiembenh , R.drawable.school , "Danh cho học sinh"));
-        mListData.add(new phongdich(R.drawable.custom_bg_binhphuc , R.drawable.custom_bg_sk , R.drawable.school , "Danh cho phụ huynh"));
-        mListData.add(new phongdich(R.drawable.custom_bg_nhiembenh , R.drawable.custom_btn_nhiembenh , R.drawable.school , "Danh cho học sinh"));
+        mListData.add(new phongdich(R.drawable.custom_bg_binhphuc , R.drawable.custom_bg_sk , R.drawable.school , "Danh cho nơi làm việc"));
+        mListData.add(new phongdich(R.drawable.custom_bg_nhiembenh , R.drawable.custom_btn_nhiembenh , R.drawable.school , "Danh cho khu dịch vụ"));
         return mListData;
     }
 
