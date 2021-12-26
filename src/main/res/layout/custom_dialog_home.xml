@@ -28,6 +28,7 @@
                android:layout_marginTop="10sp"
                android:fontFamily="@font/helveticaneue_bold"
                android:gravity="center"
+               android:textAllCaps="true"
                android:padding="10sp"
                android:text="Xin Chào Nguyễn Văn Quỳnh"
                android:textColor="@color/color_main"

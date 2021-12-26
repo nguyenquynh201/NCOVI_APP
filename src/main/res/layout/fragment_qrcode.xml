@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F1F1"
     tools:context=".View.Fragments.QRFragment">
-
     <RelativeLayout
         android:id="@+id/rlt_qr_1"
         android:layout_width="match_parent"
@@ -127,6 +125,7 @@
                     android:src="@drawable/ic_qr_codee" />
 
                 <TextView
+                    android:id="@+id/tv_qr_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10sp"
@@ -154,13 +153,13 @@
             tools:ignore="HardcodedText,RtlHardcoded" />
 
         <Button
-            android:id="@+id/btn_dangkydich"
+            android:id="@+id/btn_dangky_qr"
             android:layout_width="match_parent"
             android:layout_height="50sp"
             android:layout_below="@id/btn_qr"
             android:layout_marginTop="10sp"
             android:background="@drawable/custom_btn_border"
-            android:text="Đăng ký điểm kiểm dịch"
+            android:text="Tạo mã qr code"
             android:textColor="@color/color_main"
             android:textSize="18sp"
             tools:ignore="HardcodedText" />

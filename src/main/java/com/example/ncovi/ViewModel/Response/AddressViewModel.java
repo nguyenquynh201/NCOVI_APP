@@ -70,7 +70,6 @@ public class AddressViewModel extends ViewModel {
                     mListQuanHuyen.setValue(null);
                 }
             }
-
             @Override
             public void onFailure(Call<List<quanhuyen>> call, Throwable t) {
                 mListQuanHuyen.setValue(null);

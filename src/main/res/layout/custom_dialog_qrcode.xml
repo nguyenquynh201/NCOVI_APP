@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:background="@drawable/custom_dialog"
+        android:layout_margin="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rlt_toast_1"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:background="@drawable/item_dialog_qrcode">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:gravity="center"
+                android:text="Mã QR Code của bạn"
+                android:textColor="@color/color_main"
+                android:textSize="24sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/img_qr_code"
+            android:layout_width="200sp"
+            android:layout_height="200sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/rlt_toast_1"
+            android:layout_marginTop="10sp"
+            android:fontFamily="@font/helveticaneue_bold"
+            android:gravity="center"
+            android:padding="10sp"
+            android:textColor="@color/color_nguyhiem"
+            android:textSize="28sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="10"
+            android:padding="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_qr_code"
+            android:layout_marginTop="15sp">
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_weight="5"
+                android:background="@drawable/custom_btn"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:text="Lưu"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_marginEnd="5sp"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:layout_marginStart="5sp"
+                android:id="@+id/btn_dismiss"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_weight="5"
+                android:background="@drawable/custom_btn_border"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:text="hủy"
+                android:textColor="@color/color_main"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

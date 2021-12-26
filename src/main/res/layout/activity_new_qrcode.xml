@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".View.Activity.NewQRCodeActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:fontFamily="@font/helveticaneue_bold"
+        android:text="Tạo Mã QR CODE"
+        android:textColor="@color/color_main"
+        android:textSize="24sp" />
+    <TextView
+
+        android:id="@+id/tv_edit_address_qr_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10sp"
+        android:fontFamily="@font/hindsiliguri_medium"
+        android:gravity="right"
+        android:text="Chỉnh sửa thông tin"
+        android:textColor="@color/color_main"
+
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
+    <LinearLayout
+        android:id="@+id/lnl_tt_1_qr_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tt_1"
+        android:orientation="vertical"
+        android:padding="10sp">
+
+        <TextView
+            android:id="@+id/tv_name_qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:textColor="@color/color_title_edittext"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txt_name_qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:background="@drawable/custom_edittext_tt"
+            android:drawableStart="@drawable/ic_user"
+            android:drawablePadding="10sp"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:gravity="center_vertical"
+            android:hint="Tên của bạn"
+            android:paddingStart="10sp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/color_edittext_1"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnl_tt_5_qr_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lnl_tt_4"
+        android:orientation="vertical"
+        android:padding="10sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_address_qr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:fontFamily="@font/hindsiliguri_medium"
+                android:text="Địa chỉ hiện tại *"
+                android:textColor="@color/color_title_edittext"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_tinh_qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/custom_edittext_tt"
+            android:drawableStart="@drawable/ic_tinhquanxa"
+            android:drawablePadding="10sp"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:gravity="center_vertical"
+            android:paddingStart="10sp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText,RtlSymmetry,UseCompatTextViewDrawableXml" />
+
+        <TextView
+            android:id="@+id/txt_huyen_qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/custom_edittext_tt"
+            android:drawableStart="@drawable/ic_tinhquanxa"
+            android:drawablePadding="10sp"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:gravity="center_vertical"
+            android:paddingStart="10sp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText,RtlSymmetry,UseCompatTextViewDrawableXml" />
+
+        <TextView
+            android:id="@+id/txt_xaphuong_qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/custom_edittext_tt"
+            android:drawableStart="@drawable/ic_tinhquanxa"
+            android:drawablePadding="10sp"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:gravity="center_vertical"
+            android:paddingStart="10sp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText,RtlSymmetry,UseCompatTextViewDrawableXml" />
+
+
+        <TextView
+            android:id="@+id/txt_diachi_qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_marginTop="20sp"
+            android:background="@drawable/custom_edittext_tt"
+            android:drawableStart="@drawable/ic_diachi"
+            android:drawablePadding="10sp"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:gravity="center_vertical"
+            android:hint="Nhập số nhà"
+            android:paddingStart="10sp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/color_edittext_1"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText,RtlSymmetry,UseCompatTextViewDrawableXml" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnl_tt_6_qr_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lnl_tt_5_qr_code"
+        android:orientation="vertical"
+        android:padding="10sp">
+
+        <TextView
+            android:id="@+id/tv_sdt_qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:text="Số điện thoại *"
+            android:textColor="@color/color_title_edittext"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txt_sdt_qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/custom_edittext_tt"
+            android:drawableStart="@drawable/ic_icon_phone_tt"
+            android:drawablePadding="10sp"
+            android:fontFamily="@font/hindsiliguri_medium"
+            android:gravity="center_vertical"
+            android:paddingStart="10sp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText,RtlSymmetry,UseCompatTextViewDrawableXml" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_qr_code"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_margin="10sp"
+        android:background="@drawable/custom_btn"
+        android:text="Create"
+        android:textColor="@color/white" />
+</LinearLayout>

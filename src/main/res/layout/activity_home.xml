@@ -6,21 +6,22 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".View.Activity.Home">
-<FrameLayout
-    android:id="@+id/frame_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@id/navigation"
-    />
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/navigation" />
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="60sp"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/menu"
-        app:elevation="2sp"
         android:background="@drawable/custom_nav"
-        app:labelVisibilityMode="unlabeled"
+        app:elevation="2sp"
         app:itemIconTint="@drawable/custom_icon"
-        />
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu" />
 </RelativeLayout>

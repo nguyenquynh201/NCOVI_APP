@@ -15,15 +15,23 @@ import com.example.ncovi.Model.quanhuyen;
 import com.example.ncovi.Model.thanhpho;
 import com.example.ncovi.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class QuanHuyenAdaptor extends ArrayAdapter<quanhuyen> {
     private List<quanhuyen> quanhuyenList;
+
+
     public QuanHuyenAdaptor(@NonNull Context context, int resource, @NonNull List<quanhuyen> objects) {
         super(context, resource, objects);
-        quanhuyenList = new ArrayList<>(objects);
+
+        quanhuyenList = new ArrayList<>();
+
     }
 
     @NonNull
@@ -35,7 +43,7 @@ public class QuanHuyenAdaptor extends ArrayAdapter<quanhuyen> {
        }
         TextView  textView = convertView.findViewById(R.id.txt_quanHuyen);
         quanhuyen quanhuyen = getItem(position);
-        textView.setText(quanhuyen.getName());
+        textView.setText(quanhuyen.getTenhuyen());
         return convertView;
     }
 
@@ -53,7 +61,7 @@ public class QuanHuyenAdaptor extends ArrayAdapter<quanhuyen> {
                     String filter  =constraint.toString().toLowerCase(Locale.ROOT).trim();
                     for(quanhuyen quanhuyen : quanhuyenList)
                     {
-                        if (quanhuyen.getName().toLowerCase(Locale.ROOT).contains(filter))
+                        if (quanhuyen.getTenhuyen().toLowerCase(Locale.ROOT).contains(filter))
                         {
                             mListQH.add(quanhuyen);
                         }
@@ -74,7 +82,7 @@ public class QuanHuyenAdaptor extends ArrayAdapter<quanhuyen> {
 
             @Override
             public CharSequence convertResultToString(Object resultValue) {
-                return ((quanhuyen) resultValue).getName();
+                return ((quanhuyen) resultValue).getTenhuyen();
             }
         };
     }

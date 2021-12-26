@@ -25,7 +25,8 @@ public class TinhTrangSucKhoeAdaptor extends RecyclerView.Adapter<TinhTrangSucKh
     private List<TinhTrangSucKhoe> ListTinhTrangs;
     private Context context;
 
-    public TinhTrangSucKhoeAdaptor(Context context) {
+    public TinhTrangSucKhoeAdaptor(Context context ,  List<TinhTrangSucKhoe> ListTinhTrangs) {
+        this.ListTinhTrangs = ListTinhTrangs;
         this.context = context;
     }
     public void searchTinhTrang(ArrayList<TinhTrangSucKhoe> tinhTrangSucKhoes){
@@ -38,9 +39,6 @@ public class TinhTrangSucKhoeAdaptor extends RecyclerView.Adapter<TinhTrangSucKh
     @SuppressLint("NotifyDataSetChanged")
     public void setDataTinhTrang(List<TinhTrangSucKhoe> ListTinhTrang) {
         this.ListTinhTrangs = ListTinhTrang;
-//        int initialSize = ListTinhTrang.size();
-//        ListTinhTrangs.addAll(ListTinhTrang);
-//        notifyItemRangeInserted(initialSize, ListTinhTrangs.size() - 1); //Correct position
         notifyDataSetChanged();
     }
 

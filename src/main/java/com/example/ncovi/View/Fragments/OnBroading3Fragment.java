@@ -25,14 +25,8 @@ private Button btn_onBoarding3;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View mView = inflater.inflate(R.layout.fragment_on_broading3, container, false);
-        btn_onBoarding3 = mView.findViewById(R.id.btn_onBoarding_3);
-        btn_onBoarding3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity() , LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+
+
         return mView;
 
     }

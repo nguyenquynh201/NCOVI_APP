@@ -7,8 +7,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.ncovi.Class.NetworkConnected.NetworkConnect;
 import com.example.ncovi.Model.user;
 import com.example.ncovi.R;
 import com.example.ncovi.View.Fragments.DanhMucFragment;
@@ -42,7 +45,7 @@ public class Home extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     String username;
     TextView tv_name;
-
+    private NetworkConnect networkConnect= new NetworkConnect();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,5 +123,19 @@ public class Home extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkConnect , intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkConnect);
+        super.onStop();
+
     }
 }

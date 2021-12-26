@@ -35,7 +35,7 @@ public class PhuongXaAdaptor extends ArrayAdapter<phuongxa> {
        }
         TextView textView = convertView.findViewById(R.id.txt_phuongXa);
         phuongxa phuongxa = getItem(position);
-        textView.setText(phuongxa.getName());
+        textView.setText(phuongxa.getTenxa());
         return convertView;
     }
 
@@ -53,7 +53,7 @@ public class PhuongXaAdaptor extends ArrayAdapter<phuongxa> {
                     String filter  =constraint.toString().toLowerCase(Locale.ROOT).trim();
                     for(phuongxa phuongxa : phuongxaList)
                     {
-                        if (phuongxa.getName().toLowerCase(Locale.ROOT).contains(filter))
+                        if (phuongxa.getTenxa().toLowerCase(Locale.ROOT).contains(filter))
                         {
                             mListPX.add(phuongxa);
                         }
@@ -74,7 +74,7 @@ public class PhuongXaAdaptor extends ArrayAdapter<phuongxa> {
 
             @Override
             public CharSequence convertResultToString(Object resultValue) {
-                return ((quanhuyen) resultValue).getName();
+                return ((quanhuyen) resultValue).getTenhuyen();
             }
         };
     }

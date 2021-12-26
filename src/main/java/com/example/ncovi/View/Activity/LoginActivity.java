@@ -6,15 +6,20 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ncovi.Class.NetworkConnected.NetworkConnect;
 import com.example.ncovi.Model.login;
 import com.example.ncovi.R;
 import com.example.ncovi.View.SharedPreference.DataManager;
@@ -31,9 +36,11 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private UserApplyViewModel userApplyViewModel;
     String sdt;
+
     private CheckBox cb_save;
     private boolean isCheck;
     public static final String SAVE_OPEN_APP = "SAVE_OPEN_APP";
+    private NetworkConnect networkConnect = new NetworkConnect();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 isCheck = isChecked;
+                closeKeyBoard();
                 if (cb_save.isChecked()) {
                     DataManager.savePhone(edt_phone.getText().toString().trim());
                     Toast.makeText(LoginActivity.this, "Lưu số điện thoại", Toast.LENGTH_SHORT).show();
@@ -79,12 +87,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sdt = edt_phone.getText().toString().trim();
-
-                if (edt_phone.getText().toString().trim().isEmpty()) {
-
+                closeKeyBoard();
+                progressDialog.show();
+                if (sdt.isEmpty()) {
                     Toast.makeText(LoginActivity.this, "Vui lòng nhập số điện thoại", Toast.LENGTH_SHORT).show();
                     return;
-
                 } else if (sdt.length() > 11) {
                     Toast.makeText(LoginActivity.this, "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
                     return;
@@ -92,12 +99,12 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    progressDialog.show();
                     userApplyViewModel.getCheck().observe(LoginActivity.this, new Observer<String>() {
                         @Override
                         public void onChanged(String check) {
                             if (check.equals("error")) {
                                 progressDialog.dismiss();
+
                                 Toast.makeText(LoginActivity.this, "Số điện thoại này đã đăng ký rồi ", Toast.LENGTH_SHORT).show();
                             } else if (check.equals("success")) {
                                 PhoneAuthProvider.getInstance().verifyPhoneNumber("+84" + edt_phone.getText().toString().trim()
@@ -114,12 +121,12 @@ public class LoginActivity extends AppCompatActivity {
                                             public void onVerificationFailed(@NonNull FirebaseException e) {
                                                 progressDialog.dismiss();
                                                 Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
                                             }
 
                                             @Override
                                             public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                                 progressDialog.dismiss();
+                                                DataManager.savePhone(edt_phone.getText().toString().trim());
                                                 Intent intent = new Intent(LoginActivity.this, OTPActivity.class);
                                                 intent.putExtra("sdt", sdt);
                                                 intent.putExtra("verification", s);
@@ -145,8 +152,9 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onChanged(login login) {
                         if (login != null) {
-                            if (!edt_phone.getText().toString().trim().isEmpty() && edt_phone.getText().toString().trim().length() < 11) {
+                            if (!sdt.isEmpty() && sdt.length() < 11) {
                                 progressDialog.dismiss();
+                                closeKeyBoard();
                                 DataManager.saveUserName(login.getUser());
                                 Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, Home.class);
@@ -154,12 +162,14 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(intent);
                             } else {
                                 progressDialog.dismiss();
+                                closeKeyBoard();
                                 Toast.makeText(LoginActivity.this, "Vui lòng nhập số điện thoại", Toast.LENGTH_SHORT).show();
 
                             }
                         } else {
                             progressDialog.dismiss();
-                            Toast.makeText(LoginActivity.this, "Tài khoản không hợp lệ", Toast.LENGTH_SHORT).show();
+                            closeKeyBoard();
+                            Toast.makeText(LoginActivity.this, "Đăng nhập lỗi", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -168,4 +178,29 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    //Check connect
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkConnect, intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkConnect);
+        super.onStop();
+
+    }
+
+    // clear bàn phím
+    private void closeKeyBoard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
 }

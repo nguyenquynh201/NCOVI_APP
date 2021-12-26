@@ -4,10 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+   android:gravity="center"
+    android:background="@color/color_bg"
     tools:context=".View.Activity.OnbroadingView_Activity">
-<ImageView
+<TextView
+    android:id="@+id/tv_main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:src="@drawable/image_3"
+    android:text="NCOVI"
+    android:fontFamily="@font/helveticaneue_bold"
+    android:textSize="64sp"
+    android:gravity="center"
+    android:textColor="@color/color_main"
     />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bg_view" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+
+        android:layout_marginTop="102dp"
+        app:SpinKit_Color="@color/color_main" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_main"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="191dp"
+        android:fontFamily="@font/helveticaneue_bold"
+        android:gravity="center"
+        android:text="Hãy Khai Báo Y Tế"
+        android:textColor="@color/color_edittext_1"
+        android:textSize="20sp" />
 </RelativeLayout>

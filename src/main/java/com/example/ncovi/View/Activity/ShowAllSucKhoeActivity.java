@@ -8,11 +8,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
+import com.example.ncovi.Class.NetworkConnected.NetworkConnect;
 import com.example.ncovi.Model.TinhTrangSucKhoe;
 import com.example.ncovi.Model.user;
 import com.example.ncovi.R;
@@ -34,6 +37,7 @@ public class ShowAllSucKhoeActivity extends AppCompatActivity {
     private EditText edt_search;
     private Toolbar toolbar;
     private com.example.ncovi.Model.user user;
+    private NetworkConnect networkConnect = new NetworkConnect();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,10 +111,24 @@ public class ShowAllSucKhoeActivity extends AppCompatActivity {
     }
 
     private void loadListSucKhoe(List<TinhTrangSucKhoe> tinhTrangSucKhoes) {
-        tinhTrangSucKhoeAdaptor = new TinhTrangSucKhoeAdaptor(this);
+        tinhTrangSucKhoeAdaptor = new TinhTrangSucKhoeAdaptor(this , tinhTrangSucKhoes);
         tinhTrangSucKhoeAdaptor.setDataTinhTrang(tinhTrangSucKhoes);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(tinhTrangSucKhoeAdaptor);
+    }
+    //Check connect
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkConnect , intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkConnect);
+        super.onStop();
+
     }
 }

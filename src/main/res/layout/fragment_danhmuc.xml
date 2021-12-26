@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg"
+
     tools:context=".View.Fragments.DanhMucFragment">
 <TextView
     android:id="@+id/tv_tt"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Danh mục"
-    android:textColor="@color/black"
+    android:textColor="@color/color_main"
     android:textSize="24sp"
     android:layout_margin="20sp"
-    android:fontFamily="@font/hindsiliguri_medium"
+    android:fontFamily="@font/helveticaneue_bold"
     />
 
     <RelativeLayout
@@ -85,7 +85,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_user_tt" />
+                        android:src="@drawable/ic_dieukhoansudung" />
                 </LinearLayout>
 
                 <TextView
@@ -167,7 +167,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_user_tt" />
+                        android:src="@drawable/ic_facebook" />
                 </LinearLayout>
 
                 <TextView
@@ -221,6 +221,47 @@
                     android:text="Giám sát cách ly"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/tt_logout"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_below="@id/tt_fanpage"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
+            app:cardCornerRadius="5sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="70sp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_main"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_log_out" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:paddingStart="20sp"
+                    android:text="Thoát"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>

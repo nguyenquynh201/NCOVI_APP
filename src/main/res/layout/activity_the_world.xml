@@ -34,17 +34,23 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/appbar_show_world">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv_show_world"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10sp"
-            tools:ignore="ScrollViewSize"
-            tools:listitem="@layout/item_the_world" />
-    </ScrollView>
+  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+      android:id="@+id/refresh_layout"
+      android:layout_width="match_parent"
+      android:layout_below="@id/appbar_show_world"
+      android:layout_height="match_parent"
+      tools:ignore="ObsoleteLayoutParam">
+      <ScrollView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+         >
+          <androidx.recyclerview.widget.RecyclerView
+              android:id="@+id/rcv_show_world"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_margin="10sp"
+              tools:ignore="ScrollViewSize"
+              tools:listitem="@layout/item_the_world" />
+      </ScrollView>
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </RelativeLayout>

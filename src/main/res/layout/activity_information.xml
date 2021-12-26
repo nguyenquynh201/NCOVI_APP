@@ -125,16 +125,7 @@
                             android:textSize="18sp"
                             android:fontFamily="@font/hindsiliguri_medium"
                             tools:ignore="InefficientWeight" />
-<!--                        <TextView-->
-<!--                            android:id="@+id/tv_man"-->
-<!--                            android:textColor="@color/black"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:text="Name"-->
-<!--                            android:textSize="18sp"-->
-<!--                            android:fontFamily="@font/hindsiliguri_medium"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            tools:ignore="HardcodedText" />-->
+
 
 
 
@@ -150,16 +141,7 @@
                            android:onClick="check"
                            android:textSize="18sp"
                            tools:ignore="InefficientWeight" />
-<!--                       <TextView-->
-<!--                           android:id="@+id/tv_woman"-->
-<!--                           android:textColor="@color/black"-->
-<!--                           android:layout_gravity="center"-->
-<!--                           android:text="Nữ"-->
-<!--                           android:textSize="18sp"-->
-<!--                           android:fontFamily="@font/hindsiliguri_medium"-->
-<!--                           android:layout_width="wrap_content"-->
-<!--                           android:layout_height="wrap_content"-->
-<!--                           tools:ignore="HardcodedText" />-->
+
 
                 </RadioGroup>
             </LinearLayout>
@@ -432,6 +414,8 @@
 
                 <CheckBox
                     android:id="@+id/cb_thongtin"
+                    android:button="@null"
+                    android:drawableStart="@drawable/custom_checkbox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Tôi cam kết các thông tin khai là đúng sự thật và đồng ý với Điều khoản sử dụng"

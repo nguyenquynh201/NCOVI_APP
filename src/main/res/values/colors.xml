@@ -13,6 +13,9 @@
     <color name="color_bg_feedback">#84BDED</color>
     <color name="color_edittext">#E7E7E7</color>
     <color name="color_border">#9C9C9C</color>
+    <color name="color_khaibao_1">#F4F4F4</color>
+    <color name="color_khaibao_2">#D8D8D8</color>
+    <color name="color_heading_1">#EAEAEA</color>
     <color name="color_edittext_1">#7AA0C6</color>
     <color name="color_title_edittext">#535353</color>
     <color name="color_antoan">#4C7E28</color>

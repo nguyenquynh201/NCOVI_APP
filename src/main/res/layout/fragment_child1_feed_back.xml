@@ -253,7 +253,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/hindsiliguri_medium"
                                 android:gravity="center_vertical"
-                                android:hint="Chọn quận huyện"
+                                android:hint="Chọn Thành phố"
                                 android:paddingStart="10sp"
                                 android:textColorHint="@color/color_bg_feedback"
                                 android:textSize="18sp" />
@@ -295,7 +295,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/hindsiliguri_medium"
                                 android:gravity="center_vertical"
-                                android:hint="Chọn quận huyện"
+                                android:hint="Chọn Quận/Huyện"
                                 android:paddingStart="10sp"
                                 android:textColorHint="@color/color_bg_feedback"
                                 android:textSize="18sp" />
@@ -338,7 +338,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/hindsiliguri_medium"
                                 android:gravity="center_vertical"
-                                android:hint="Chọn quận huyện"
+                                android:hint="Chọn Xã/Phường"
                                 android:paddingStart="10sp"
                                 android:textColorHint="@color/color_bg_feedback"
                                 android:textSize="18sp" />

@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".View.Activity.KhaiBaoTuNguyenActivity"
+    tools:ignore="HardcodedText">
+
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+           android:padding="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:ignore="ScrollViewSize">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:text="Thông tin bệnh cá nhân"
+                android:textColor="@color/color_main"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/helveticaneue_bold"
+                    android:text="Trong 14 ngày, Anh/Chị"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_heading_1"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10sp"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/hindsiliguri_medium"
+                        android:gravity="right"
+                        android:text="Có"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:ignore="InefficientWeight" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8"
+                        android:fontFamily="@font/hindsiliguri_medium"
+                        android:gravity="center"
+                        android:text="Không"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:background="@color/color_khaibao_1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:fontFamily="@font/hindsiliguri_regular"
+                        android:padding="5sp"
+                        android:text="Có tiếp xúc với trường hợp bệnh hoặc nghi ngờ mắc bênh COVID-19 không?"
+                        android:textColor="@color/black" />
+
+                    <RadioGroup
+                        android:id="@+id/rdo_group_khai_bao_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:text="Có"
+                            android:id="@+id/radio_yes_khai_bao_1"
+                            android:layout_width="wrap_content"
+                            android:onClick="checkClick"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:button="@null"
+                            android:drawableStart="@drawable/custom_radio" />
+
+                        <RadioButton
+                            android:id="@+id/radio_no_khai_bao_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:button="@null"
+                            android:text="Không"
+                            android:onClick="checkClick"
+                            android:checked="true"
+                            android:drawableStart="@drawable/custom_radio" />
+
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:background="@color/color_khaibao_2"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:fontFamily="@font/hindsiliguri_regular"
+                        android:padding="5sp"
+                        android:text="Có đi về từ vùng có dịch COVID-19 không??"
+                        android:textColor="@color/black" />
+
+                    <RadioGroup
+                        android:id="@+id/rdo_group_khai_bao_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:onClick="checkClick_1"
+                            android:text="Có"
+                            android:id="@+id/radio_yes_khai_bao_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:button="@null"
+                            android:drawableStart="@drawable/custom_radio" />
+
+                        <RadioButton
+                            android:onClick="checkClick_1"
+                            android:id="@+id/radio_no_khai_bao_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:button="@null"
+                            android:text="Không"
+                            android:checked="true"
+                            android:drawableStart="@drawable/custom_radio" />
+
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:background="@color/color_khaibao_1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:fontFamily="@font/hindsiliguri_regular"
+                        android:padding="5sp"
+                        android:text="Có tiếp xúc với trường hợp đi về từ vùng dịch không?"
+                        android:textColor="@color/black" />
+
+                    <RadioGroup
+                        android:id="@+id/rdo_group_khai_bao_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:onClick="checkClick_2"
+                            android:id="@+id/radio_yes_khai_bao_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:button="@null"
+                            android:text="Có"
+                            android:drawableStart="@drawable/custom_radio" />
+
+                        <RadioButton
+                            android:onClick="checkClick_2"
+                            android:id="@+id/radio_no_khai_bao_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:button="@null"
+                            android:checked="true"
+                            android:text="Không"
+                            android:drawableStart="@drawable/custom_radio" />
+
+                    </RadioGroup>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:fontFamily="@font/helveticaneue_bold"
+                    android:text="Trong 14 ngày , Anh/Chị có đến Quốc gia/vùng lãnh thổng nào(có thể ghi nhiều quốc gia):"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edt_khai_bao_thong_tin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:background="@drawable/custom_edittext"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:hint="Nhập thông tin"
+                    android:paddingStart="10sp"
+                    android:textColor="@color/color_text_feedback" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:fontFamily="@font/helveticaneue_bold"
+                    android:text="Trong vòng 14 ngày qua, Anh/Chị có thấy xuất hiện dấu hiệu nào sau đây không?"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5sp"
+                        android:layout_weight="5"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/lnl_khaibao_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:background="@color/color_khaibao_1"
+                            android:orientation="horizontal"
+                            android:padding="10sp">
+
+                            <CheckBox
+                                android:id="@+id/cb_khaibao_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:button="@null"
+                                android:drawableStart="@drawable/custom_checkbox"
+                                android:fontFamily="@font/hindsiliguri_regular"
+                                android:layoutDirection="rtl"
+                                android:text="Sốt"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnl_khaibao_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:background="@color/color_khaibao_2"
+                            android:orientation="horizontal"
+                            android:padding="10sp">
+
+                            <CheckBox
+                                android:id="@+id/cb_khaibao_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:button="@null"
+                                android:drawableStart="@drawable/custom_checkbox"
+                                android:fontFamily="@font/hindsiliguri_regular"
+                                android:layoutDirection="rtl"
+                                android:text="Ho"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnl_khaibao_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:background="@color/color_khaibao_1"
+                            android:orientation="horizontal"
+                            android:padding="10sp">
+
+                            <CheckBox
+                                android:id="@+id/cb_khaibao_3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:button="@null"
+                                android:drawableStart="@drawable/custom_checkbox"
+                                android:fontFamily="@font/hindsiliguri_regular"
+                                android:layoutDirection="rtl"
+                                android:text="Khó thở"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5sp"
+                        android:layout_weight="5"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/lnl_khaibao_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:background="@color/color_khaibao_1"
+                            android:orientation="horizontal"
+                            android:padding="10sp">
+
+                            <CheckBox
+                                android:id="@+id/cb_khaibao_4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:button="@null"
+                                android:drawableStart="@drawable/custom_checkbox"
+                                android:fontFamily="@font/hindsiliguri_regular"
+                                android:layoutDirection="rtl"
+                                android:text="Viêm phổi"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnl_khaibao_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:background="@color/color_khaibao_2"
+                            android:orientation="horizontal"
+                            android:padding="10sp">
+
+                            <CheckBox
+                                android:id="@+id/cb_khaibao_5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:button="@null"
+                                android:drawableStart="@drawable/custom_checkbox"
+                                android:fontFamily="@font/hindsiliguri_regular"
+                                android:layoutDirection="rtl"
+                                android:text="Đau họng"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnl_khaibao_6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:background="@color/color_khaibao_1"
+                            android:orientation="horizontal"
+                            android:padding="10sp">
+
+                            <CheckBox
+                                android:id="@+id/cb_khaibao_6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:button="@null"
+                                android:drawableStart="@drawable/custom_checkbox"
+                                android:fontFamily="@font/hindsiliguri_regular"
+                                android:layoutDirection="rtl"
+                                android:text="Mệt mỏi"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/helveticaneue_bold"
+                    android:text="Hiện tại Anh/Chị có các bệnh dưới đây"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:id="@+id/lnl_2_khaibao_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/color_khaibao_1"
+                    android:orientation="horizontal"
+                    android:padding="10sp">
+
+                    <CheckBox
+                        android:id="@+id/cb_2_khaibao_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:drawableStart="@drawable/custom_checkbox"
+                        android:fontFamily="@font/hindsiliguri_regular"
+                        android:layoutDirection="rtl"
+                        android:text="Bệnh gan mãn tính"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnl_2_khaibao_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/color_khaibao_2"
+                    android:orientation="horizontal"
+                    android:padding="10sp">
+
+                    <CheckBox
+                        android:id="@+id/cb_2_khaibao_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:drawableStart="@drawable/custom_checkbox"
+                        android:fontFamily="@font/hindsiliguri_regular"
+                        android:layoutDirection="rtl"
+                        android:text="Bệnh máu mãn tính"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnl_2_khaibao_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/color_khaibao_1"
+                    android:orientation="horizontal"
+                    android:padding="10sp">
+
+                    <CheckBox
+                        android:id="@+id/cb_2_khaibao_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:drawableStart="@drawable/custom_checkbox"
+                        android:fontFamily="@font/hindsiliguri_regular"
+                        android:layoutDirection="rtl"
+                        android:text="Bệnh phổi mãn tính"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnl_2_khaibao_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/color_khaibao_2"
+                    android:orientation="horizontal"
+                    android:padding="10sp">
+
+                    <CheckBox
+                        android:id="@+id/cb_2_khaibao_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:drawableStart="@drawable/custom_checkbox"
+                        android:fontFamily="@font/hindsiliguri_regular"
+                        android:layoutDirection="rtl"
+                        android:text="Bệnh thận mãi tính"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnl_2_khaibao_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/color_khaibao_1"
+                    android:orientation="horizontal"
+                    android:padding="10sp">
+
+                    <CheckBox
+                        android:id="@+id/cb_2_khaibao_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:drawableStart="@drawable/custom_checkbox"
+                        android:fontFamily="@font/hindsiliguri_regular"
+                        android:layoutDirection="rtl"
+                        android:text="Huyết áp cao"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnl_2_khaibao_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/color_khaibao_2"
+                    android:orientation="horizontal"
+                    android:padding="10sp">
+
+                    <CheckBox
+                        android:id="@+id/cb_2_khaibao_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:drawableStart="@drawable/custom_checkbox"
+                        android:fontFamily="@font/hindsiliguri_regular"
+                        android:layoutDirection="rtl"
+                        android:text="HIV hoặc suy giảm miễn dịch"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lnl_2_khaibao_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lnl_tt_6"
+                android:orientation="vertical"
+                android:padding="10sp">
+
+                <CheckBox
+                    android:id="@+id/cb_check_khaibao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableStart="@drawable/custom_checkbox"
+                    android:text="Tôi cam kết các thông tin khai là đúng sự thật và đồng ý với Điều khoản sử dụng"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnl_2_khaibao_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10sp">
+
+                <Button
+                    android:id="@+id/btn_guithongtin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:background="@drawable/custom_btn"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:text="Gửi thông tin khai báo"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+                <Button
+                    android:id="@+id/no_btn_guithongtin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:background="@drawable/custom_btn_noclick"
+                    android:fontFamily="@font/hindsiliguri_medium"
+                    android:text="Gửi thông tin khai báo"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

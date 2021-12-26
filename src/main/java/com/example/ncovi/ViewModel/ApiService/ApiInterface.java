@@ -10,11 +10,14 @@ import com.example.ncovi.Model.user;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface ApiInterface {
     // call dữ liệu thành phố thông qua hàm get
@@ -94,4 +97,15 @@ public interface ApiInterface {
                                  @Field("xa") String xa,
                                  @Field("diachi") String diachi
                                  );
+    @Multipart
+    @POST("uploadqrcode.php")
+    Call<String> UploadQRCode(@Part MultipartBody.Part qrcode);
+    @FormUrlEncoded
+    @POST("khaibao.php")
+    Call<String> InsertKhaiBao(@Field("idMember") String idMember ,
+                               @Field("noidung1") String noidung1 ,
+                               @Field("noidung2") String noidung2 ,
+                               @Field("noidung3") String noidung3 ,
+                               @Field("noidung4") String noidung4,
+                               @Field("thoigian") String thoigian);
 }

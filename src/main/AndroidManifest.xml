@@ -10,10 +10,15 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_MMS" />
     <uses-permission android:name="android.permission.WRITE_SMS" />
-<!--    <uses-permission-->
-<!--        android:name="android.permission.ACCESS_FINE_LOCATION"-->
-<!--        tools:ignore="CoarseFineLocation" />-->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -27,14 +32,23 @@
     <application
         android:name=".View.SharedPreference.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/logoo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NCOVI">
-<!--        <activity-->
-<!--            android:name=".View.Activity.MapBoxActivity"-->
-<!--            android:exported="true" />-->
+        <activity
+            android:name=".View.Activity.KhaiBaoTuNguyenActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.Activity.QRCodeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.Activity.NewQRCodeActivity"
+            android:exported="true" /> <!-- <activity -->
+        <!-- android:name=".View.Activity.MapBoxActivity" -->
+        <!-- android:exported="true" /> -->
         <activity
             android:name=".View.Activity.TheWorldActivity"
             android:exported="true" />
@@ -78,9 +92,10 @@
         </activity>
         <activity
             android:name=".Class.Capture"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
             android:theme="@style/zxing_CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
             tools:ignore="LockedOrientationActivity" />
 
         <meta-data
@@ -89,6 +104,8 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <receiver android:name=".Class.NetworkConnected.NetworkConnect" />
     </application>
 
 </manifest>

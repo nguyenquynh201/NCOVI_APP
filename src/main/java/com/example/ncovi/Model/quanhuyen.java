@@ -4,9 +4,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class quanhuyen {
-    @SerializedName("name")
+    @SerializedName("tenhuyen")
     @Expose
-    private String name;
+    private String tenhuyen;
     @SerializedName("maqh")
     @Expose
     private String maqh;
@@ -17,12 +17,12 @@ public class quanhuyen {
     @Expose
     private String matp;
 
-    public String getName() {
-        return name;
+    public String getTenhuyen() {
+        return tenhuyen;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTenhuyen(String tenhuyen) {
+        this.tenhuyen = tenhuyen;
     }
 
     public String getMaqh() {
@@ -48,5 +48,4 @@ public class quanhuyen {
     public void setMatp(String matp) {
         this.matp = matp;
     }
-
 }

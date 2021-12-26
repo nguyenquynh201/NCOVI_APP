@@ -28,6 +28,7 @@ import android.widget.TextView;
 
 import com.example.ncovi.Model.ModelCovid.covid;
 import com.example.ncovi.R;
+import com.example.ncovi.View.Activity.KhaiBaoTuNguyenActivity;
 import com.example.ncovi.View.Activity.PhongDichActivity;
 import com.example.ncovi.View.Activity.TheWorldActivity;
 import com.example.ncovi.ViewModel.Response.CovidViewModel;
@@ -140,6 +141,15 @@ public class HomeFragment extends Fragment {
         tv_count_tuvong = view.findViewById(R.id.tv_count_tuvong);
         // ánh xạ button
         btn_huongdan = view.findViewById(R.id.btn_huongdan);
+        btn_khaibao = view.findViewById(R.id.btn_khaibao);
+        btn_khaibao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity() , KhaiBaoTuNguyenActivity.class);
+                getActivity().startActivity(intent);
+
+            }
+        });
         btn_huongdan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -7,9 +7,9 @@ public class phuongxa {
     @SerializedName("xaid")
     @Expose
     private String xaid;
-    @SerializedName("name")
+    @SerializedName("tenxa")
     @Expose
-    private String name;
+    private String tenxa;
     @SerializedName("type")
     @Expose
     private String type;
@@ -25,12 +25,12 @@ public class phuongxa {
         this.xaid = xaid;
     }
 
-    public String getName() {
-        return name;
+    public String getTenxa() {
+        return tenxa;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTenxa(String tenxa) {
+        this.tenxa = tenxa;
     }
 
     public String getType() {

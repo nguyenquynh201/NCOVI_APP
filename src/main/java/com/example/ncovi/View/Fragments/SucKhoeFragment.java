@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
@@ -31,6 +32,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.ncovi.Class.WrapContentLinearLayoutManager;
 import com.example.ncovi.Model.TinhTrangSucKhoe;
@@ -64,6 +66,7 @@ public class SucKhoeFragment extends Fragment {
     private Button btn_send_sk;
     private View view;
     private Home home;
+    SwipeRefreshLayout refreshLayout;
     private RecyclerView rcv_sk;
     private TinhTrangViewModel tinhTrangViewModel;
     private TinhTrangSucKhoeAdaptor tinhTrangSucKhoeAdaptor;
@@ -89,10 +92,14 @@ public class SucKhoeFragment extends Fragment {
         home = new Home();
         user = DataManager.loadUser();
         iniUi();
+        loadData();
         return view;
     }
 
+    @SuppressLint("ResourceAsColor")
     private void iniUi() {
+        // ánh xạ SwipeRefreshLayout
+        refreshLayout = view.findViewById(R.id.refresh);
         // ánh xạ recyclerview
         rcv_sk = view.findViewById(R.id.rcv_sk);
         //ánh xạ checkbox
@@ -109,6 +116,23 @@ public class SucKhoeFragment extends Fragment {
         SpannableString ss_all = new SpannableString(strAll);
         ss_all.setSpan(underlineSpan, 0, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         tv_show_all.setText(ss_all);
+        //  gán màu cho refreshLayout
+        refreshLayout.setColorSchemeColors(R.color.color_main);
+        // refresh lại layout
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadData();
+                        refreshLayout.setRefreshing(false);
+
+                    }
+                }, 3000);
+            }
+        });
         tv_show_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,14 +195,11 @@ public class SucKhoeFragment extends Fragment {
                 @SuppressLint("SimpleDateFormat") SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
                 ngay = dateFormat.format(date);
                 gio = timeFormat.format(date);
-                boolean check_1  = checkBox_sk_1.isChecked();
-                boolean check_2  = checkBox_sk_2.isChecked();
-                boolean check_3  = checkBox_sk_3.isChecked();
-                boolean check_4  = checkBox_sk_4.isChecked();
-                boolean check_5  = checkBox_sk_5.isChecked();
+                loadData();
                 if (checkBox_sk_1.isChecked() || checkBox_sk_2.isChecked() || checkBox_sk_3.isChecked() || checkBox_sk_4.isChecked()) {
                     canhbao = "Nguy Hiểm";
                     tinhtrang = "Có nguy cơ ";
+
                     DataManager.saveTinhTrang(ListtinhTrang);
                     Dialog_NguyHiem(Gravity.CENTER);
                     AddTinhTrang();
@@ -199,8 +220,7 @@ public class SucKhoeFragment extends Fragment {
                     checkBox_sk_5.setChecked(false);
 
                 }
-                }
-//            }
+            }
         });
     }
 
@@ -208,28 +228,30 @@ public class SucKhoeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         idMember = user.getIdMember();
+        loadData();
+
+
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void loadData() {
         tinhTrangViewModel = new ViewModelProvider(getActivity()).get(TinhTrangViewModel.class);
         tinhTrangViewModel.getListTinhTrang().observe(getActivity(), new Observer<List<TinhTrangSucKhoe>>() {
             @Override
             public void onChanged(List<TinhTrangSucKhoe> tinhTrangSucKhoes) {
                 ListtinhTrang = (ArrayList<TinhTrangSucKhoe>) tinhTrangSucKhoes;
                 if (ListtinhTrang != null) {
-
-                    loadData(ListtinhTrang);
+                    tinhTrangSucKhoeAdaptor = new TinhTrangSucKhoeAdaptor(getActivity(), tinhTrangSucKhoes);
+                    tinhTrangSucKhoeAdaptor.setDataTinhTrang(tinhTrangSucKhoes);
+                    rcv_sk.setHasFixedSize(true);
+                    rcv_sk.setLayoutManager(new WrapContentLinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                    rcv_sk.setAdapter(tinhTrangSucKhoeAdaptor);
+                    tinhTrangSucKhoeAdaptor.notifyDataSetChanged();
                 }
             }
         });
         tinhTrangViewModel.iniSelectList(idMember);
 
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private void loadData(List<TinhTrangSucKhoe> tinhTrangSucKhoes) {
-        tinhTrangSucKhoeAdaptor = new TinhTrangSucKhoeAdaptor(getActivity());
-        tinhTrangSucKhoeAdaptor.setDataTinhTrang(tinhTrangSucKhoes);
-        rcv_sk.setHasFixedSize(true);
-        rcv_sk.setLayoutManager(new WrapContentLinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        rcv_sk.setAdapter(tinhTrangSucKhoeAdaptor);
     }
 
     private void AddTinhTrang() {
@@ -239,7 +261,7 @@ public class SucKhoeFragment extends Fragment {
             public void onChanged(List<TinhTrangSucKhoe> tinhTrangSucKhoes) {
                 ListtinhTrang = (ArrayList<TinhTrangSucKhoe>) tinhTrangSucKhoes;
                 if (ListtinhTrang != null) {
-                    loadData(ListtinhTrang);
+                    loadData();
                 }
             }
         });

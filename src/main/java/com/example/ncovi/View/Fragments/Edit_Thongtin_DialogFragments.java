@@ -19,19 +19,17 @@ import com.example.ncovi.Model.phuongxa;
 import com.example.ncovi.Model.quanhuyen;
 import com.example.ncovi.Model.thanhpho;
 import com.example.ncovi.R;
-import com.example.ncovi.View.Activity.ThongTinCaNhanActivity;
-import com.example.ncovi.View.Adaptor.PhuongXaAdaptor;
-import com.example.ncovi.View.Adaptor.QuanHuyenAdaptor;
-import com.example.ncovi.View.Adaptor.ThanhPhoAdaptor;
+import com.example.ncovi.View.Adaptor.AdaptorPhuongXa;
+import com.example.ncovi.View.Adaptor.AdaptorQuanHuyen;
+import com.example.ncovi.View.Adaptor.AdaptorThanhPho;
 import com.example.ncovi.ViewModel.Response.AddressViewModel;
-
 import java.util.List;
 
 public class Edit_Thongtin_DialogFragments extends DialogFragment implements View.OnClickListener{
-    private ThanhPhoAdaptor thanhPhoAdaptor;
     private AddressViewModel addressViewModel;
-    private QuanHuyenAdaptor quanHuyenAdaptor;
-    private PhuongXaAdaptor phuongXaAdaptor;
+    private AdaptorThanhPho adaptorThanhPho;
+    private AdaptorQuanHuyen adaptorQuanHuyen;
+    private AdaptorPhuongXa adaptorPhuongXa;
     private List<thanhpho> mListTP;
     private List<com.example.ncovi.Model.quanhuyen> mListQH;
     private List<com.example.ncovi.Model.phuongxa> mListPX;
@@ -83,18 +81,17 @@ public class Edit_Thongtin_DialogFragments extends DialogFragment implements Vie
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         addressViewModel = new ViewModelProvider(this).get(AddressViewModel.class);
-        getDateTinh();
+        getDataTinh();
     }
 
-    private void getDateTinh() {
-        addressViewModel.getListThanhPho().observe(this, new Observer<List<thanhpho>>() {
+    private void getDataTinh() {
+        addressViewModel.getListThanhPho().observe(getViewLifecycleOwner(), new Observer<List<thanhpho>>() {
             @Override
             public void onChanged(List<thanhpho> listTP) {
                 mListTP = listTP;
                 if (mListTP != null) {
-                    thanhPhoAdaptor = new ThanhPhoAdaptor(getActivity(), R.layout.item_thanhpho, mListTP);
-                    thanhPhoAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner_TP.setAdapter(thanhPhoAdaptor);
+                    adaptorThanhPho = new AdaptorThanhPho(getContext(), mListTP);
+                    spinner_TP.setAdapter(adaptorThanhPho);
                     spinner_TP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -106,6 +103,7 @@ public class Edit_Thongtin_DialogFragments extends DialogFragment implements Vie
 
                         @Override
                         public void onNothingSelected(AdapterView<?> parent) {
+
                         }
                     });
                 }
@@ -114,7 +112,7 @@ public class Edit_Thongtin_DialogFragments extends DialogFragment implements Vie
         });
         addressViewModel.iniData();
     }
-    // load danh sách quận huyện
+
     private void loadDataQH(String getId) {
         addressViewModel = new ViewModelProvider(this).get(AddressViewModel.class);
         addressViewModel.getListQuanHuyen().observe(this, new Observer<List<quanhuyen>>() {
@@ -122,14 +120,13 @@ public class Edit_Thongtin_DialogFragments extends DialogFragment implements Vie
             public void onChanged(List<quanhuyen> quanhuyens) {
                 mListQH = quanhuyens;
                 if (mListQH != null) {
-                    quanHuyenAdaptor = new QuanHuyenAdaptor(getActivity(), R.layout.item_quanhuyen, mListQH);
-                    quanHuyenAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner_QH.setAdapter(quanHuyenAdaptor);
+                    adaptorQuanHuyen = new AdaptorQuanHuyen(getContext(), mListQH);
+                    spinner_QH.setAdapter(adaptorQuanHuyen);
                     spinner_QH.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             String getId = mListQH.get(position).getMaqh();
-                            String name = mListQH.get(position).getName();
+                            String name = mListQH.get(position).getTenhuyen();
                             tv_spinner_QH.setText(name);
                             loadDataPX(getId);
                         }
@@ -144,7 +141,7 @@ public class Edit_Thongtin_DialogFragments extends DialogFragment implements Vie
         });
         addressViewModel.iniDataQuanHuyen(getId);
     }
-    // load danh sách phường xã
+
     private void loadDataPX(String getIPPX) {
         addressViewModel = new ViewModelProvider(this).get(AddressViewModel.class);
         addressViewModel.getListPhuongXa().observe(this, new Observer<List<phuongxa>>() {
@@ -152,13 +149,12 @@ public class Edit_Thongtin_DialogFragments extends DialogFragment implements Vie
             public void onChanged(List<phuongxa> phuongxas) {
                 mListPX = phuongxas;
                 if (mListPX != null) {
-                    phuongXaAdaptor = new PhuongXaAdaptor(getActivity(), R.layout.item_phuongxa, mListPX);
-                    phuongXaAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner_PX.setAdapter(phuongXaAdaptor);
+                    adaptorPhuongXa = new AdaptorPhuongXa(getContext(), mListPX);
+                    spinner_PX.setAdapter(adaptorPhuongXa);
                     spinner_PX.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            String name = mListPX.get(position).getName();
+                            String name = mListPX.get(position).getTenxa();
                             tv_spinner_PX.setText(name);
                         }
 
@@ -167,7 +163,6 @@ public class Edit_Thongtin_DialogFragments extends DialogFragment implements Vie
 
                         }
                     });
-
                 }
             }
         });

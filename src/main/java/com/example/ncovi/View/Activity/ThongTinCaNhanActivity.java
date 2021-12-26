@@ -9,8 +9,11 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.SpannableString;
@@ -22,6 +25,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -33,35 +37,35 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ncovi.Class.NetworkConnected.NetworkConnect;
 import com.example.ncovi.Model.login;
 import com.example.ncovi.Model.phuongxa;
 import com.example.ncovi.Model.quanhuyen;
 import com.example.ncovi.Model.thanhpho;
 import com.example.ncovi.Model.user;
 import com.example.ncovi.R;
-import com.example.ncovi.View.Adaptor.PhuongXaAdaptor;
-import com.example.ncovi.View.Adaptor.QuanHuyenAdaptor;
-import com.example.ncovi.View.Adaptor.ThanhPhoAdaptor;
+import com.example.ncovi.View.Adaptor.AdaptorPhuongXa;
+import com.example.ncovi.View.Adaptor.AdaptorQuanHuyen;
+import com.example.ncovi.View.Adaptor.AdaptorThanhPho;
 import com.example.ncovi.View.Fragments.Edit_Thongtin_DialogFragments;
 import com.example.ncovi.View.SharedPreference.DataManager;
 import com.example.ncovi.ViewModel.Response.AddressViewModel;
 import com.example.ncovi.ViewModel.Response.UserApplyViewModel;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class ThongTinCaNhanActivity extends AppCompatActivity {
-    private ThanhPhoAdaptor thanhPhoAdaptor;
     private AddressViewModel addressViewModel;
-    private QuanHuyenAdaptor quanHuyenAdaptor;
-    private PhuongXaAdaptor phuongXaAdaptor;
+    private AdaptorThanhPho adaptorThanhPho;
+    private AdaptorQuanHuyen adaptorQuanHuyen;
+    private AdaptorPhuongXa adaptorPhuongXa;
     private List<com.example.ncovi.Model.thanhpho> mListTP;
     private List<com.example.ncovi.Model.quanhuyen> mListQH;
     private List<com.example.ncovi.Model.phuongxa> mListPX;
     private CheckBox checkBox;
-    private TextView tv_sdt, tv_name, tv_date, tv_card, tv_address, tv_round, tv_spinner_TP, tv_spinner_QH, tv_spinner_PX , tv_mSdt;
-    private TextView tv_tinh , tv_quanhuyen , tv_phuongxa , tv_edit;
+    private TextView tv_sdt, tv_name, tv_date, tv_card, tv_address, tv_round, tv_spinner_TP, tv_spinner_QH, tv_spinner_PX, tv_mSdt;
+    private TextView tv_tinh, tv_quanhuyen, tv_phuongxa, tv_edit;
     private EditText edt_date, edt_username, edt_address, edt_card, edt_email;
     private Spinner spinner_QH, spinner_PX, spinner_TP;
     private RadioButton rdo_all, rdo_man, rdo_woman;
@@ -72,6 +76,7 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     private Button btn_check, btn_noCheck;
     String idmember, username, date, round, cmnd, thanhpho, quanhuyen, phuongxa, diachi, email;
+    private NetworkConnect networkConnect = new NetworkConnect();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +107,7 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
         tv_date = findViewById(R.id.tv_date);
         tv_name = findViewById(R.id.tv_name);
         tv_round = findViewById(R.id.tv_round);
-        tv_tinh  = findViewById(R.id.txt_tinh);
+        tv_tinh = findViewById(R.id.txt_tinh);
         tv_quanhuyen = findViewById(R.id.txt_huyen);
         tv_phuongxa = findViewById(R.id.txt_xaphuong);
         tv_edit = findViewById(R.id.tv_edit_address);
@@ -225,6 +230,7 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (checkBox.isChecked()) {
+                    closeKeyBoard();
                     int radioId = rdoGroup.getCheckedRadioButtonId();
                     rdo_all = findViewById(radioId);
                     round = (String) rdo_all.getText();
@@ -235,6 +241,7 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             // tạo biến kiểu String và gán giá trị
+
                             username = edt_username.getText().toString().trim();
                             date = edt_date.getText().toString().trim();
                             cmnd = edt_card.getText().toString().trim();
@@ -290,7 +297,7 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
                         tv_phuongxa.setText(xa);
                     }
                 });
-                dialogFragment.show(getSupportFragmentManager() , "tag");
+                dialogFragment.show(getSupportFragmentManager(), "tag");
                 dialogFragment.setCancelable(false);
             }
         });
@@ -343,12 +350,15 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
             rdo_woman.setChecked(true);
         }
         // check email nếu null thì gắn giá trị cho edittext
-        if (users.getEmail().equals("")) {
-            edt_email.setText("Nhập Email");
+        if (users.getEmail() == null) {
+            edt_email.setHint("Nhập Email");
+        } else {
+            edt_email.setText(email);
         }
-        edt_email.setText(email);
     }
+
     public void check(View view) {
+        closeKeyBoard();
         int radioId = rdoGroup.getCheckedRadioButtonId();
         rdo_all = findViewById(radioId);
     }
@@ -396,20 +406,19 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
         dialog_notification.show();
 
     }
-    // load danh sách tỉnh
+
     private void getDataTinh() {
-        addressViewModel = new ViewModelProvider(this).get(AddressViewModel.class);
         addressViewModel.getListThanhPho().observe(this, new Observer<List<thanhpho>>() {
             @Override
             public void onChanged(List<thanhpho> listTP) {
                 mListTP = listTP;
                 if (mListTP != null) {
-                    thanhPhoAdaptor = new ThanhPhoAdaptor(ThongTinCaNhanActivity.this, R.layout.item_thanhpho, mListTP);
-                    thanhPhoAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner_TP.setAdapter(thanhPhoAdaptor);
+                    adaptorThanhPho = new AdaptorThanhPho(ThongTinCaNhanActivity.this, mListTP);
+                    spinner_TP.setAdapter(adaptorThanhPho);
                     spinner_TP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            closeKeyBoard();
                             String getId = mListTP.get(position).getMatp();
                             String name = mListTP.get(position).getName();
                             tv_spinner_TP.setText(name);
@@ -418,6 +427,7 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
 
                         @Override
                         public void onNothingSelected(AdapterView<?> parent) {
+
                         }
                     });
                 }
@@ -427,7 +437,14 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
         addressViewModel.iniData();
     }
 
-    // load danh sách quận huyện
+    private void closeKeyBoard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
     private void loadDataQH(String getId) {
         addressViewModel = new ViewModelProvider(this).get(AddressViewModel.class);
         addressViewModel.getListQuanHuyen().observe(this, new Observer<List<quanhuyen>>() {
@@ -435,14 +452,13 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
             public void onChanged(List<quanhuyen> quanhuyens) {
                 mListQH = quanhuyens;
                 if (mListQH != null) {
-                    quanHuyenAdaptor = new QuanHuyenAdaptor(ThongTinCaNhanActivity.this, R.layout.item_quanhuyen, mListQH);
-                    quanHuyenAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner_QH.setAdapter(quanHuyenAdaptor);
+                    adaptorQuanHuyen = new AdaptorQuanHuyen(ThongTinCaNhanActivity.this, mListQH);
+                    spinner_QH.setAdapter(adaptorQuanHuyen);
                     spinner_QH.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             String getId = mListQH.get(position).getMaqh();
-                            String name = mListQH.get(position).getName();
+                            String name = mListQH.get(position).getTenhuyen();
                             tv_spinner_QH.setText(name);
                             loadDataPX(getId);
                         }
@@ -458,7 +474,6 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
         addressViewModel.iniDataQuanHuyen(getId);
     }
 
-    // load danh sách phường xã
     private void loadDataPX(String getIPPX) {
         addressViewModel = new ViewModelProvider(this).get(AddressViewModel.class);
         addressViewModel.getListPhuongXa().observe(this, new Observer<List<phuongxa>>() {
@@ -466,14 +481,39 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
             public void onChanged(List<phuongxa> phuongxas) {
                 mListPX = phuongxas;
                 if (mListPX != null) {
-                    phuongXaAdaptor = new PhuongXaAdaptor(ThongTinCaNhanActivity.this, R.layout.item_phuongxa, mListPX);
-                    phuongXaAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner_PX.setAdapter(phuongXaAdaptor);
+                    adaptorPhuongXa = new AdaptorPhuongXa(ThongTinCaNhanActivity.this, mListPX);
+                    spinner_PX.setAdapter(adaptorPhuongXa);
+                    spinner_PX.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            String name = mListPX.get(position).getTenxa();
+                            tv_spinner_PX.setText(name);
+                        }
 
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
                 }
             }
         });
         addressViewModel.iniDataPhuongXa(getIPPX);
+    }
+
+    //Check connect
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkConnect, intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkConnect);
+        super.onStop();
+
     }
 
 }

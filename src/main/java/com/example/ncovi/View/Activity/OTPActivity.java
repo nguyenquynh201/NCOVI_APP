@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ncovi.Class.NetworkConnected.NetworkConnect;
 import com.example.ncovi.R;
 import com.example.ncovi.ViewModel.Response.UserApplyViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,6 +37,7 @@ public class OTPActivity extends AppCompatActivity {
     private static final int REQ_USER = 200;
     private String phone_number;
     String verificationId;
+    private NetworkConnect networkConnect = new NetworkConnect();
 
 
     @Override
@@ -64,6 +68,7 @@ public class OTPActivity extends AppCompatActivity {
         btn_checkOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.show();
                 String one = input_one.getText().toString().trim();
                 String two = input_two.getText().toString().trim();
                 String three = input_three.getText().toString().trim();
@@ -76,7 +81,6 @@ public class OTPActivity extends AppCompatActivity {
                 }
                 String code = one + two + three + four + five + six;
                 if (verificationId != null) {
-                    progressDialog.show();
                     PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(
                             verificationId, code);
                     FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
@@ -88,10 +92,12 @@ public class OTPActivity extends AppCompatActivity {
                                         Intent intent = new Intent(getApplicationContext(), InformationActivity.class);
                                         intent.putExtra("sdt_name", phone_number);
 //                                        DataManager.savePhone(phone_number);
+                                        progressDialog.dismiss();
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
 
                                     } else {
+                                        progressDialog.dismiss();
                                         Toast.makeText(OTPActivity.this, "Lỗi", Toast.LENGTH_SHORT).show();
                                     }
                                 }
@@ -224,6 +230,20 @@ public class OTPActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+    //Check connect
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkConnect , intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkConnect);
+        super.onStop();
 
     }
 }

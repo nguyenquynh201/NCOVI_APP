@@ -69,5 +69,6 @@ public class Child2FeedBackFragment extends Fragment {
         tv_khaibao_fb.setText(ss_TruongHop);
     }
     private void getEvent() {
+
     }
 }

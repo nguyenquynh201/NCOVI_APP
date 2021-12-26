@@ -1,16 +1,18 @@
 package com.example.ncovi.Model;
 
+import java.util.List;
+
 public class phongdich {
     int bg;
     int bg_icon;
     int icon;
     String title;
-
     public phongdich(int bg, int bg_icon, int icon, String title) {
         this.bg = bg;
         this.bg_icon = bg_icon;
         this.icon = icon;
         this.title = title;
+
     }
 
     public int getBg() {

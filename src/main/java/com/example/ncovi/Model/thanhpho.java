@@ -7,9 +7,9 @@ public class thanhpho {
     @SerializedName("matp")
     @Expose
     private String matp;
-    @SerializedName("name")
+    @SerializedName("tentinh")
     @Expose
-    private String name;
+    private String tentinh;
     @SerializedName("type")
     @Expose
     private String type;
@@ -17,6 +17,8 @@ public class thanhpho {
     @Expose
     private String slug;
 
+    public thanhpho() {
+    }
 
 
     public String getMatp() {
@@ -28,11 +30,11 @@ public class thanhpho {
     }
 
     public String getName() {
-        return name;
+        return tentinh;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String tentinh) {
+        this.tentinh = tentinh;
     }
 
     public String getType() {
